@@ -172,7 +172,7 @@ class DomFactory extends XaoRoot {
             $this->strErrorMsgFull .= ":\n ".$this->strErrorMsg."\n";
             
             if(is_int($this->intErrorLine)) {
-                $objDebugData =& new TextDebugger(
+                $objDebugData =& TextDebugger(
                     $strData,
                     $this->intErrorLine
                 );

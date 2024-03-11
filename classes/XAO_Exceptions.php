@@ -99,9 +99,10 @@ class Exceptions extends XaoRoot {
     * @return  void
     * @access  public
     */
-    function SetMessage($strMsg) {
+    function SetMessage($strMsg) 
+    {
         $strMsg = trim($strMsg);
-        if(strlen($strMsg)) {
+        if($strMsg !== '') {
             $this->strError = $strMsg;
         }
         else {
@@ -109,6 +110,7 @@ class Exceptions extends XaoRoot {
                 "Exceptions::SetMessage - The error message was empty.";
         }
     }
+
     
     /**
     * Exceptional message setter method
@@ -145,32 +147,33 @@ class Exceptions extends XaoRoot {
     * @access  public
     */
     function &ndCreateError() {
-                                        // create the document node for this 
-                                        // error
+        // create the document node for this
+        // error
         $elError =& $this->objDoc->create_element($this->strElName);
         $ndError =& $this->ndErrors->append_child($elError);
         $elMsg   =& $this->objDoc->create_element("msg");
         $ndMsg   =& $ndError->append_child($elMsg);
-                                        // populate it with the main message        
+        // populate it with the main message        
         if(strlen($this->strError)) {
             $ndMsg->set_content($this->strError);
         }
         else {
-            $strMsg = 
+            $strMsg =
                 "Exceptions::ndCreateError - No error message has been set.";
             $ndMsg->set_content($strMsg);
         }
-                                        // set up any attributes
-        foreach($this->arrErrAttribs AS $attName => $attVal) {
-            if(strlen($this->arrErrAttribs[$attName])) {
-                $ndError->set_attribute($attName,$attVal);
+        // set up any attributes
+        foreach($this->arrErrAttribs as $attName => $attVal) {
+            if(strlen($attVal)) {
+                $ndError->set_attribute($attName, $attVal);
             }
         }
-                                        // include stack trace if required
+        // include stack trace if required
         if($this->blnCreateStackTrace) $this->_CreateStackTrace($ndError);
         
         return $ndError;
     }
+
     
     /**
     * Method for creating verbose stack trace data on DOM tree

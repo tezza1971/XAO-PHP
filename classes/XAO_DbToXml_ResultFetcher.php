@@ -33,57 +33,62 @@ include_once "XAO_XaoRoot.php";
 * @package      XAO
 * @link         https://github.com/tezza1971/XAO-PHP
 */
-class ResultFetcher extends XaoRoot {
+
+use XaoRoot;
+
+class ResultFetcher extends XaoRoot 
+{
+
+    protected array $arr2D = [];
     
-    var $arr2D = array();
+    protected $objResult;
     
-    var $objResult;
-    
-    function ResultFetcher(&$objResult) {
-        if(is_object($objResult)) {
-            $this->objResult =& $objResult;
-        }
-        else {
-            $this->Throw(
-                "ResultFetcher: Only [result] objects are supported."
-                ,$this->arrSetErrFnc(__FUNCTION__,__LINE__)
+    public function __construct($objResult) 
+    {
+        if (is_object($objResult)) {
+            $this->objResult = $objResult;
+        } else {
+            $this->throwError(
+                "ResultFetcher: Only [result] objects are supported.",
+                $this->setError(__FUNCTION__, __LINE__)
             );
             return;
         }
-        
-                                        // PEAR DB
-        if(is_a($objResult,"DB_Result")) {
-            $this->MkPearResult();
+
+        // PEAR DB
+        if ($objResult instanceof DB_Result) {
+            $this->makePearResult();
         }
+        
         // insert more elseif() tests (more supported objects)
         else {
-            $this->Throw(
-                "ResultFetcher: The DB result object you passed to DbToXml "
-                ."returned an error:\n".$objDBResult->getMessage() 
-                //.":\n".$objDBResult->getUserinfo()
-                ,$this->arrSetErrFnc(__FUNCTION__,__LINE__)
+            $this->throwError(
+                "ResultFetcher: The DB result object you passed to DbToXml returned an error:\n" 
+                . $objDBResult->getMessage(),
+                $this->setError(__FUNCTION__, __LINE__)
             );
         }
     }
-    
-    function &arrGetResult() {
-        if(is_array($this->arr2D)) return $this->arr2D;
-        return array();
+
+    public function getResult(): array
+    {
+        return $this->arr2D;
     }
-    
-    function MkPearResult() {
-        if(DB::isError($this->objResult)) {
-            $this->Throw(
-                "ResultFetcher: The DB result object you passed to DbToXml "
-                ."returned an error:\n".$this->objResult->getMessage() 
-                //.":\n".$objDBResult->getUserinfo() // security issue
-                ,$this->arrSetErrFnc(__FUNCTION__,__LINE__)
+
+    protected function makePearResult(): void
+    {
+        if (DB::isError($this->objResult)) {
+            $this->throwError(
+                "ResultFetcher: The DB result object you passed to DbToXml returned an error:\n"
+                . $this->objResult->getMessage(),
+                $this->setError(__FUNCTION__, __LINE__)
             );
-        }
-        else {
-                                        // fetch the result data (list of rows) 
-                                        // into an associative array.
-            while($this->arr2D[] = $this->objResult->fetchRow(DB_FETCHMODE_ASSOC));
+        } else {
+            // fetch the result data (list of rows)
+            // into an associative array.
+            while ($row = $this->objResult->fetchRow(DB_FETCHMODE_ASSOC)) {
+                $this->arr2D[] = $row;
+            }
             array_pop($this->arr2D);
         }
     }

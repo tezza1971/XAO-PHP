@@ -199,22 +199,22 @@ class DomDoc extends XaoRoot {
     * @return   void
     * @access   public
     */
-    function DomDoc(&$mxdData,$intUse = XAO_DOC_NEW) {
+    function DomDoc($mxdData,$intUse = XAO_DOC_NEW) {
 
         $this->_intMode = $intUse;
                                     // for more info on each case block, see
                                     // comments in the constant definitions
                                     // at the top of this file.
-        if($this->_intMode == XAO_DOC_NEW) {
+        if($this->_intMode === XAO_DOC_NEW) {
             $this->objDoc = domxml_new_doc("1.0");
             $elRoot = $this->objDoc->create_element($mxdData);
             $this->ndRoot = $this->objDoc->append_child($elRoot);
         } 
         elseif(
-               $this->_intMode == XAO_DOC_READFILE 
-            || $this->_intMode == XAO_DOC_DATA
+            $this->_intMode === XAO_DOC_READFILE 
+            || $this->_intMode === XAO_DOC_DATA
         ) {
-            $objDomFactory =& new DomFactory($mxdData);
+            $objDomFactory = new DomFactory($mxdData);
             if(strlen($objDomFactory->strErrorMsgFull)) {
                 $this->_AbortDocument($objDomFactory->strErrorMsgFull);
                 die($objDomFactory->strError);
@@ -224,10 +224,10 @@ class DomDoc extends XaoRoot {
             }
             $this->ndRoot = $this->objDoc->document_element();
         }
-        elseif($this->_intMode == XAO_DOC_REFERENCE) {
-            $this->objDoc =& $mxdData;
-            $this->ndRoot = @$mxdData->document_element()
-                OR $this->_AbortDocument(
+        elseif($this->_intMode === XAO_DOC_REFERENCE) {
+            $this->objDoc = $mxdData;
+            $this->ndRoot = $mxdData->document_element()
+                ?? $this->_AbortDocument(
                     "The reference document object is not a valid native 
                     PHP DOM XML document."
                 );
@@ -238,6 +238,7 @@ class DomDoc extends XaoRoot {
             );
         }
     }
+
         
     /**
     * Abort document initialisation and instantiate an error document instead.
@@ -254,19 +255,18 @@ class DomDoc extends XaoRoot {
     * @access  private
     */
     function _AbortDocument($strErrMsg) {
-                                        // produce a basic documemnt so that we
-                                        // have enough to throw an error.
-        $this->objDoc = domxml_new_doc("1,0");
-        $ndRoot = $this->objDoc->create_element("abortedDoc");
-        $this->ndRoot = $this->objDoc->append_child($ndRoot);
+        // produce a basic documemnt so that we
+        // have enough to throw an error.
+        $this->objDoc = dom_import_simplexml(new \SimpleXMLElement('<root/>'));
         
-        $arrErrAttribs = array("code" => "DomDocInit");
+        $arrErrAttribs = ['code' => 'DomDocInit'];
         $this->Throw(
             $strErrMsg,
             $arrErrAttribs,
-            $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+            $this->arrSetErrFnc(__FUNCTION__, __LINE__)
         );
     }
+
     
     /**
     * Base error logger
@@ -286,31 +286,38 @@ class DomDoc extends XaoRoot {
     * @return  void
     * @access  public
     */
-    function Throw($strErrMsg,$arrAttribs = null) {
-        if(is_null($arrAttribs)) $arrAttribs = array();
-        parent::Throw($strErrMsg,$arrAttribs);
-                                        // obtain singleton error object if it
-                                        // does not already exist.
-        if(!is_object($this->objErr)){
-                                        // set up the error node to pass to the
-                                        // Exceptions constructor. Ensure that
-                                        // all the contents have a default
-                                        // namespace in XAO
+    function Throw($strErrMsg, $arrAttribs = null) {
+        if (is_null($arrAttribs)) {
+            $arrAttribs = []; 
+        }
+        parent::Throw($strErrMsg, $arrAttribs);
+
+        // obtain singleton error object if it 
+        // does not already exist.
+        if (!isset($this->objErr)) {
+            // set up the error node to pass to the
+            // Exceptions constructor. Ensure that
+            // all the contents have a default
+            // namespace in XAO
             $ndExceptions = $this->ndAppendToRoot("exceptions");
-            $ndExceptions->set_attribute("xmlns",$this->idXaoNamespace);
+            $ndExceptions->set_attribute("xmlns", $this->idXaoNamespace);
             $this->objErr = 
                 new Exceptions($this->objDoc, $ndExceptions, "exception");
         }
-                                        // the Exceptions class is not much use
-                                        // without populating this.
-        $this->objErr->SetMessage($this->strError);
-                                        // optional extras go here.
-        $this->objErr->SetMsgAttribs($arrAttribs);
-                                        // This is where all the action occurs
-                                        // in the Exceptions class. See the Doc
-                                        // comments in that class for details.
+
+        // the Exceptions class is not much use
+        // without populating this.
+        $this->objErr->setMessage($this->strError);
+
+        // optional extras go here.
+        $this->objErr->setMsgAttribs($arrAttribs);
+
+        // This is where all the action occurs
+        // in the Exceptions class. See the Doc
+        // comments in that class for details.
         $this->ndErr = $this->objErr->ndCreateError();
     }
+
         
     /**
     * Serialise and return the entire document object as stand-alone XML.
@@ -326,19 +333,21 @@ class DomDoc extends XaoRoot {
     }
 
     /**
-    * Serialise and return the entire document as an XML fragment.
-    * 
-    * This is used when an ASCII version of the XML document is required 
-    * _without_ any XML declaration or processing instructions. Everything
-    * below and including the root element is serialised.
-    *
-    * @return  xml     fragment
-    * @access  public
-    */
-    function xmlGetFrag() {
-        $this->_TestForConstuctor();
-        return "\n\n".$this->objDoc->dump_node($this->ndRoot,true)."\n\n";
+     * Serialize and return the entire document as an XML fragment.
+     * 
+     * This is used when an ASCII version of the XML document is required
+     * _without_ any XML declaration or processing instructions. Everything
+     * below and including the root element is serialized.
+     *
+     * @return string XML fragment
+     */ 
+    public function xmlGetFrag(): string
+    {
+        $this->_TestForConstructor();
+        
+        return $this->objDoc->dumpNode($this->ndRoot, true);
     }
+
         
     /**
     * mass storage serialisation
@@ -352,32 +361,24 @@ class DomDoc extends XaoRoot {
     */
     function CommitToFile($uriDestination) {
         $this->_TestForConstuctor();
-        if(!file_exists($uriDestination)) {
-        $this->Throw(
-                "CommitToFile: ".$uriDestination." was not found.",
-                $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-            );
-        return;
+        
+        if (!file_exists($uriDestination)) {
+            throw new Exception("CommitToFile: " . $uriDestination . " was not found.");
         }
-        $fp = @fopen($uriDestination,"w+")
-            or $this->Throw(
-                "CommitToFile: could not open ".$uriDestination." for writing",
-                $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-            );
-        @flock($fp,LOCK_EX)
-            or $this->Throw(
-                "CommitToFile: Could not get an exclusive lock on "
-                .$uriDestination." for writing",
-                $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-            );
-        fwrite($fp,$this->xmlGetDoc())
-            or $this->Throw(
-                "CommitToFile: could write to ".$uriDestination,
-                $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-            );
-        flock($fp,LOCK_UN);
+        
+        $fp = fopen($uriDestination, "w+") or 
+            throw new Exception("CommitToFile: could not open " . $uriDestination . " for writing");
+
+        flock($fp, LOCK_EX) or
+            throw new Exception("CommitToFile: Could not get an exclusive lock on " . $uriDestination . " for writing");
+
+        fwrite($fp, $this->xmlGetDoc()) or
+            throw new Exception("CommitToFile: could write to " . $uriDestination);
+
+        flock($fp, LOCK_UN);
         fclose($fp);
     }
+
     
     /**
     * fetch a single element node by name
@@ -390,12 +391,18 @@ class DomDoc extends XaoRoot {
     * @return   node
     * @access   public
     */
-    function &ndGetOneEl($strName,$intIdx=0) {
-        $this->_TestForConstuctor();
-        $arrNds = $this->objDoc->get_elements_by_tagname($strName);
-        if(isset($arrNds[$intIdx])) return $arrNds[$intIdx];
-        return false;
+    public function &ndGetOneEl(string $strName, int $intIdx = 0): ?DOMNode {
+        $this->_TestForConstructor();
+        
+        $arrNds = $this->objDoc->getElementsByTagName($strName);
+        
+        if (isset($arrNds[$intIdx])) {
+            return $arrNds[$intIdx];
+        }
+        
+        return null;
     }
+
     
     /**
     * quickly add a new element under the root element.
@@ -408,21 +415,23 @@ class DomDoc extends XaoRoot {
     * @return   node    the newly added element node object
     * @access   public
     */
-    function &ndAppendToRoot($strElName,$strCont = "") {
-        $this->_TestForConstuctor();
-        if(!$this->blnTestXmlName($strElName)) {
-            $this->Throw(
-                    "ndAppendToRoot: ".$strElName
-                    ." Is not a valid element name.",
-                    $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-                );
-            return false;
+    public function &ndAppendToRoot(string $strElName, string $strCont = ""): ?DOMNode {
+        $this->_TestForConstructor();
+        
+        if (!$this->blnTestXmlName($strElName)) {
+            throw new Exception(
+                "ndAppendToRoot: " . $strElName
+                . " Is not a valid element name."
+            );
         }
-        $elNew = $this->objDoc->create_element($strElName);
-        $ndNew = $this->ndRoot->append_child($elNew);
-        $ndNew->set_content($strCont);
+        
+        $elNew = $this->objDoc->createElement($strElName);
+        $ndNew = $this->ndRoot->appendChild($elNew);
+        $ndNew->nodeValue = $strCont;
+        
         return $ndNew;
     }
+
 
     /**
     * quickly add a new element under an exising element node.
@@ -436,28 +445,31 @@ class DomDoc extends XaoRoot {
     * @return   node    the newly added element node object
     * @access   public
     */
-    function &ndAppendToNode(&$ndStub,$strElName,$strCont = "") {
-        $this->_TestForConstuctor();
-        if(!$this->blnTestElementNode($ndStub)) {
-            $this->Throw(
+    public function &ndAppendToNode(DOMNode $ndStub, string $strElName, string $strCont = ""): ?DOMNode {
+        $this->_TestForConstructor();
+
+        if (!$this->blnTestElementNode($ndStub)) {
+            throw new Exception(
                 "ndAppendToNode: First argument is not a valid element node.",
-                $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+                $this->arrSetErrFnc(__FUNCTION__, __LINE__)
             );
-            return false;
         }
-        if(!$this->blnTestXmlName($strElName)) {
-            $this->Throw(
-                    "ndAppendToNode: ".$strElName
-                    ." Is not a valid element name.",
-                    $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-                );
-            return false;
+
+        if (!$this->blnTestXmlName($strElName)) {
+            throw new Exception(
+                "ndAppendToNode: " . $strElName
+                . " Is not a valid element name.",
+                $this->arrSetErrFnc(__FUNCTION__, __LINE__)
+            );
         }
-        $elNew = $this->objDoc->create_element($strElName);
-        $ndNew = $ndStub->append_child($elNew);
-        $ndNew->set_content($strCont);
+
+        $elNew = $this->objDoc->createElement($strElName);
+        $ndNew = $ndStub->appendChild($elNew);
+        $ndNew->nodeValue = $strCont;
+
         return $ndNew;
     }
+
 
     /**
     * Import a fragment from a foreign PHP DOM XML document
@@ -482,27 +494,30 @@ class DomDoc extends XaoRoot {
     * @return   node    the newly added element node object
     * @access   public
     */
-    function &ndImportChildFrag(&$ndStub,&$ndNew) {
-        $this->_TestForConstuctor();
-        if(!$this->blnTestElementNode($ndStub)) {
-            $this->Throw(
-                "ndImportChildFrag: First argument is not a valid element node."
-                ,$this->arrSetErrFnc(__FUNCTION__,__LINE__)
+    public function &ndImportChildFrag(DOMNode $ndStub, DOMNode $ndNew): ?DOMNode {
+        $this->_TestForConstructor();
+
+        if (!$this->blnTestElementNode($ndStub)) {
+            throw new Exception(
+                "ndImportChildFrag: First argument is not a valid element node.",
+                $this->arrSetErrFnc(__FUNCTION__, __LINE__)
             );
-            return false;
         }
-        if(!$this->blnTestElementNode($ndNew)) {
-            $this->Throw(
-                "ndImportChildFrag: Second argument is not a valid element"
-                ." node.", $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+
+        if (!$this->blnTestElementNode($ndNew)) {
+            throw new Exception(
+                "ndImportChildFrag: Second argument is not a valid element node.",
+                $this->arrSetErrFnc(__FUNCTION__, __LINE__)  
             );
-            return false;
         }
-        $ndTmp = $this->objDoc->create_element("tmp");
-        $ndTmp = $ndStub->append_child($ndTmp);
-        $ndTmp->replace_node($ndNew);
+
+        $ndTmp = $this->objDoc->createElement("tmp");
+        $ndTmp = $ndStub->appendChild($ndTmp);
+        $ndTmp->replaceChild($ndNew, $ndTmp);
+
         return $ndNew;
     }
+
 
     /**
     * Import a foreign PHP DOM XML document and append it below $this->ndRoot
@@ -514,88 +529,100 @@ class DomDoc extends XaoRoot {
     * @param    node    an optional stub node to which the new data is grafted
     * @access   public
     */
-    function &ndConsumeDoc(&$objDoc,$ndStub = null) {
-        $this->_TestForConstuctor();
-        if(!is_object($objDoc)) {
-            $this->Throw(
-                "ndConsumeDoc: No DomDoc object given",
-                $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+    function ndConsumeDoc(DomDoc $objDoc, ?DOMNode $ndStub = null): ?DOMNode {
+        $this->_TestForConstructor();
+
+        if (!$objDoc instanceof DomDoc) {
+            throw new Exception(
+                "ndConsumeDoc: No DomDoc object given", 
+                $this->arrSetErrFnc(__FUNCTION__, __LINE__)
             );
         }
-        elseif(!isset($objDoc->ndRoot)) {
-            $this->Throw(
+
+        if (!isset($objDoc->ndRoot)) {
+            throw new Exception(
                 "ndConsumeDoc: No root node. First param must be an XAO "
-                ."DomDoc, not just a basic PHP DOMXML object. Use the "
-                ."DomFactory class if you need to convert an existing PHP "
-                ."DOMXML object.",
-                $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+                . "DomDoc, not just a basic PHP DOMXML object. Use the "
+                . "DomFactory class if you need to convert an existing PHP "
+                . "DOMXML object.",
+                $this->arrSetErrFnc(__FUNCTION__, __LINE__)  
             );
         }
-        else {
-            if(!$this->blnTestElementNode($ndStub)) $ndStub = $this->ndRoot;
-            return $this->ndImportChildFrag($ndStub,$objDoc->ndRoot);
+
+        if (!$this->blnTestElementNode($ndStub)) {
+            $ndStub = $this->ndRoot;
         }
-        return false;
+
+        return $this->ndImportChildFrag($ndStub, $objDoc->ndRoot);
     }
 
     /**
-    * Import an XML document from a file and append it below $this->ndRoot
+    * Import an XML document from a file and append it below $this->ndRoot  
     *
-    * This function will consume the contents of an entire XML document from a 
+    * This function will consume the contents of an entire XML document from a
     * file and retain it below the root node of this DomDoc.
     *
-    * @param    uri     the location of the XML file
-    * @access   public
+    * @param string $uri the location of the XML file
     */
-    function ndConsumeFile($uri,$ndStub = null) {
-                                        // If there are any parse errors, then
-                                        // they will be included in the object
-                                        // returned by DomDoc. It's up to the
-                                        // stylsheet to extract them.
-        $objDoc = new DomDoc($uri,XAO_DOC_READFILE);
-                                        // The new DomDoc is inevitably grafted
-                                        // on to this DomDoc - errors and all.
-        if(!$this->blnTestElementNode($ndStub)) $ndStub = $this->ndRoot;
-        return $this->ndImportChildFrag($ndStub,$objDoc->ndRoot);
+    function ndConsumeFile(string $uri, ?DOMNode $ndStub = null): ?DOMNode
+    {
+        // If there are any parse errors, then
+        // they will be included in the object
+        // returned by DomDoc. It's up to the
+        // stylesheet to extract them.
+        $objDoc = new DomDoc($uri, XAO_DOC_READFILE);
+        
+        // The new DomDoc is inevitably grafted
+        // on to this DomDoc - errors and all.
+        if (!$this->blnTestElementNode($ndStub)) {
+            $ndStub = $this->ndRoot;
+        }
+
+        return $this->ndImportChildFrag($ndStub, $objDoc->ndRoot);
     }
-    
+
     /**
-    * Import well-balenced XML data to append below $this->ndRoot
+    * Import well-balanced XML data to append below $this->ndRoot
     *
     * This function will consume the contents of some XML data after wrapping
-    * it in a root element whos name is specified in the second parameter. The
+    * it in a root element whose name is specified in the second parameter. The  
     * content is then retained under $this->ndRoot
     *
-    * @param    xml     Miscellaneous XML data
-    * @param    string  The name of the root element
-    * @access   public
+    * @param string $xml Miscellaneous XML data 
+    * @param string $strRoot The name of the root element
     */
-    function ndConsumeFragData($str,$strRoot,$ndStub = null) {
-        $this->_TestForConstuctor();
-                                        // this regex needs to be tested!
-        if(!$this->blnTestXmlName($strRoot)) {
-            $this->Throw(
-                "ndConsumeFragData: ".$strRoot
-                ." is an invalid name for root element.",
-                $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+    function ndConsumeFragData(string $str, string $strRoot, ?DOMNode $ndStub = null): ?DOMNode
+    {
+        $this->_TestForConstructor();
+        
+        if (!$this->blnTestXmlName($strRoot)) {
+            throw new Exception(
+                "ndConsumeFragData: " . $strRoot
+                . " is an invalid name for root element.",
+                $this->arrSetErrFnc(__FUNCTION__, __LINE__)
             );
         }
-        else {
-                                        // wrap the fragment data in a basic
-                                        // XML envelope
-            $str = "<"."?xml version=\"1.0\"?".">\n<".$strRoot.">"
-                .$str."</".$strRoot.">";
-                                        // If there are any parse errors, then
-                                        // they will be included in the object
-                                        // returned by DomDoc. It's up to the
-                                        // stylsheet to extract them.
-            $objDoc = new DomDoc($str,XAO_DOC_DATA);
-                                        // The new DomDoc is inevitably grafted
-                                        // on to this DomDoc - errors and all.
-            if(!$this->blnTestElementNode($ndStub)) $ndStub = $this->ndRoot;
-            return $this->ndImportChildFrag($ndStub,$objDoc->ndRoot);
+
+        // wrap the fragment data in a basic
+        // XML envelope
+        $str = "<?xml version=\"1.0\"?>\n<" . $strRoot . ">"
+            . $str . "</" . $strRoot . ">";
+
+        // If there are any parse errors, then
+        // they will be included in the object
+        // returned by DomDoc. It's up to the
+        // stylesheet to extract them.
+        $objDoc = new DomDoc($str, XAO_DOC_DATA);
+
+        // The new DomDoc is inevitably grafted
+        // on to this DomDoc - errors and all.
+        if (!$this->blnTestElementNode($ndStub)) {
+            $ndStub = $this->ndRoot;
         }
+
+        return $this->ndImportChildFrag($ndStub, $objDoc->ndRoot);
     }
+
     
     /**
     * Import well-balenced XML data to append below $this->ndRoot
@@ -626,49 +653,51 @@ class DomDoc extends XaoRoot {
     * @access   private
     * @return   void
     */
+
     function _TestForConstuctor() {
-                                            // The existance of $this->objDoc is
-                                            // garenteed. Even if the constructor
-                                            // fails to initialise one, then
-                                            // $this->_AbortDocument should be 
-                                            // called which provides a surrogate.
+        // The existance of $this->objDoc is
+        // garenteed. Even if the constructor
+        // fails to initialise one, then
+        // $this->_AbortDocument should be 
+        // called which provides a surrogate.
         if(!is_object($this->objDoc)) {
             $strThis = "DomDoc";
-                                        // try to find out the names of classes
-                                        // used to inherit DomDoc and use this
-                                        // information to produce a [hopefully]
-                                        // helpful warning.
-            $strParent = get_parent_class($this);
+            // try to find out the names of classes
+            // used to inherit DomDoc and use this
+            // information to produce a [hopefully]
+            // helpful warning.
+            $strParent = get_parent_class($this); 
             $strYoungest = get_class($this);
             $msg = "
-                <h1>MASSAGE FOR THE PROGRAMMER: $strThis constructor not called!</h1>
-                <p>You are trying to access methods on $strThis without running
-                ".$strThis."->DomDoc()</p>
-                <p>The immediate parent to $strThis is $strParent . You probably
-                need to call ".$strThis."->DomDOc() in it's constructor. PHP
-                does not automatically call the constructor of the superclass
-                in a sub class's constructor.</p>
+            <h1>MASSAGE FOR THE PROGRAMMER: {$strThis} constructor not called!</h1>
+            <p>You are trying to access methods on {$strThis} without running
+            {$strThis}->DomDoc()</p>
+            <p>The immediate parent to {$strThis} is {$strParent} . You probably
+            need to call {$strThis}->DomDOc() in it's constructor. PHP
+            does not automatically call the constructor of the superclass
+            in a sub class's constructor.</p>
             ";
             if($strParent != $strYoungest) {
-                $msg .= "
-                    <p>If you already called ".$strThis."->DomDOc() from the
-                    constructor in $strParent, then you probably didn't call the
-                    constructor for $strParent in $strYoungest. Assuming that
-                    $strYoungest is indeed a child of $strParent.</p>
-                    <p>You're getting this ugly message because $strThis 
-                    cannot handle exceptions nicely if it is not instantiated
-                    properly.</p>
-                    <p>Below is a debug_backtrace() which should help trace
-                    where the problem (method call) originated from.</p>
-                ";
+            $msg .= "
+                <p>If you already called {$strThis}->DomDOc() from the
+                constructor in {$strParent}, then you probably didn't call the
+                constructor for {$strParent} in {$strYoungest}. Assuming that
+                {$strYoungest} is indeed a child of {$strParent}.</p>
+                <p>You're getting this ugly message because {$strThis}
+                cannot handle exceptions nicely if it is not instantiated
+                properly.</p>
+                <p>Below is a debug_backtrace() which should help trace
+                where the problem (method call) originated from.</p>
+            ";
             }
             $arr = debug_backtrace();
             echo $msg."<pre>";
-            var_dump($arr);
+            var_dump($arr); 
             echo("</pre>");
             die("<h3>Script execution terminated.</h3>");
         }
     }
+
     
     
     /**
@@ -681,26 +710,17 @@ class DomDoc extends XaoRoot {
     * @param    array
     * @access   public
     */
-    function Arr2Atts(&$ndEl,$arrAttribs) {
-    if(!$this->blnTestElementNode($ndEl)) {
-        $this->Throw(
-            "Arr2Atts: First argument is not a valid element node.",
-            $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-        );
-        return false;
+    function Arr2Atts(DOMElement $ndEl, array $arrAttribs): bool 
+    {
+        foreach($arrAttribs as $strName => $strValue) {
+            $ndAttrib = $ndEl->setAttribute($strName, $strValue);
+            if(!$ndAttrib instanceof DOMAttr) {
+                throw new DOMException("Could not set attribute using NAME(\"{$strName}\") and VALUE(\"{$strValue}\").");
+            }
+        }
+        return true;
     }
 
-    foreach($arrAttribs AS $strName => $strValue) {
-            $ndAttrib = @$ndEl->set_attribute($strName,$strValue);
-            if(!is_object($ndAttrib)) $this->Throw(
-                "Arr2Atts: Could not set attribute using "
-                ."NAME(\"".$strName."\") and VALUE(\"".$strValue."\").",
-                $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-            );
-    }
-    return true;
-    }
-    
     /**
     * Use an XPath to nominate nodes for processing by a call-back function.
     *
@@ -709,50 +729,15 @@ class DomDoc extends XaoRoot {
     * usage.
     *
     * @param    string  XPath query
-    * @param    string  name of user-defined callback function
-    * @access   public
+    * @param    string  name of user-defined callback function  
     */
-    function SetCustomTagQuery($strQuery,$fncName) {
-        if(method_exists($this,$fncName)) {
-            $this->_arrCustomTagQueries[] = array($strQuery,$fncName);
+    function SetCustomTagQuery(string $strQuery, string $fncName): void
+    {
+        if(method_exists($this, $fncName)) {
+            $this->_arrCustomTagQueries[] = [$strQuery, $fncName];
+        } else {
+            throw new BadMethodCallException("Method {$fncName} is undefined.");
         }
-        else {
-            $this->Throw(
-                "SetCustomTag: Method ".$fncName." is undefined.",
-                $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-            );
-        }
-    }
-    
-    /**
-    * Have all elements of a specified name processed by a call-back function.
-    *
-    * This functionality is dubious when using namespaces. The experimental
-    * nature of PHP's DOMXML extension makes it impossible to guarentee safe
-    * usage.
-    *
-    * @param    string  name of element to be globally matched
-    * @param    string  name of user-defined callback function
-    * @access   public
-    */
-    function SetCustomTagName($elName,$fncName) {
-    if(method_exists($this,$fncName)) {
-        if($this->blnTestXmlName($elName)) {
-            $this->_arrCustomTagNames[$elName] = $fncName;
-        }
-        else {
-            $this->Throw(
-                    "SetCustomTag: ".$elName." is not a valid tag name",
-                    $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-                );
-        }
-    }
-    else {
-        $this->Throw(
-                "SetCustomTag: Method ".$fncName." is undefined.",
-                $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-            );
-    }
     }
     
     /**
@@ -766,93 +751,92 @@ class DomDoc extends XaoRoot {
     * @access   public
     */
     function ProcessCustomTags() {
-                                        // process all tag-name call-backs
-    foreach($this->_arrCustomTagNames AS $elName => $fncName) {
-        $arrNd = $this->objDoc->get_elements_by_tagname($elName);
-        if(is_array($arrNd)) {
-            foreach ($arrNd AS $nd) $this->$fncName($nd);
-        }
-        else {
-        $this->Throw(
+        // process all tag-name call-backs
+        foreach($this->_arrCustomTagNames as $elName => $fncName) {
+            $arrNd = $this->objDoc->getElementsByTagName($elName);
+            if(is_array($arrNd)) {
+                foreach ($arrNd as $nd) {
+                    $this->$fncName($nd);
+                }
+            } else {
+                throw new Exception(
                     "ProcessCustomTags: there was an error searching for "
-                    .$elName." in the document.",
-                    $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+                    . $elName . " in the document."
                 );
+            }
+        }
+        
+        // process all xpath query call-backs
+        foreach($this->_arrCustomTagQueries as $arrQryFunc) {
+            $strQry = $arrQryFunc[0];
+            $fncName = $arrQryFunc[1];
+            
+            $arrNd = $this->getXPathNodes($strQry);
+            
+            if (is_array($arrNd)) {
+                foreach ($arrNd as $nd) {
+                    $this->$fncName($nd);
+                }
+            } else {
+                throw new Exception(
+                    "XPath query {$strQry} did not work. Unfortunately, the "
+                    . "underlying DOMXML function does not provide error "
+                    . "information. Sorry."
+                );
+            }
         }
     }
-                                        // process all xpath query call-backs
-    foreach($this->_arrCustomTagQueries AS $arrQryFunc) {
-         $strQry  = $arrQryFunc[0];
-         $fncName = $arrQryFunc[1];
-         $arrNd = $this->arrNdXPathGet($strQry);
-         if(is_array($arrNd)) {
-         foreach($arrNd AS $nd) $this->$fncName($nd);
-         }
-         else {
-            $this->Throw(
-                    "XPath query ".$strQry." did not work. Unfortunately, the "
-                    ."underlying DOMXML function does not give up any error "
-                    ."information to pass on. Sorry.",
-                    $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-                );
-    }
-    }
-    }
+
     
     /**
-    * Return a list of nodes resulting from an XPath Query
-    *
-    * This function runs the XPath query and returns an array of nodes matching
-    * the results. Unfortunately, xpath_eval() never divulges any error 
-    * information. I assume that $objRes->nodeset holds a false value if the
-    * query errored.
-    *
-    * @param  string The XPath query
-    * @access public
-    */
-    function &arrNdXPath($strExpr) {
-    ob_start();
-            $objRes =& xpath_eval(xpath_new_context($this->objDoc),$strExpr);
-            $strDebugData = ob_get_contents();
-        ob_end_clean();
-        if(strlen($strDebugData) || is_array($objRes->nodeset)) {
-        $this->throw(
-            "XPath query ".$strExpr." returned errors:\n".$strDebugData
-        );
-        $this->strDebugData = $strDebugData;
-        return false;
+     * Return a list of nodes resulting from an XPath Query
+     *
+     * This function runs the XPath query and returns an array of nodes matching
+     * the results. Unfortunately, xpath_eval() never divulges any error
+     * information. I assume that $objRes->nodeset holds a false value if the
+     * query errored.
+     *
+     * @param  string $strExpr The XPath query  
+     * @return array|false Nodes matching the query or false on error
+     */
+    public function arrNdXPath(string $strExpr)
+    {
+        $objRes = xpath_eval(xpath_new_context($this->objDoc), $strExpr);
+        
+        if (!$objRes->nodeset) {
+            return false; 
         }
+        
         return $objRes->nodeset;
     }
-    
+
     /**
-    * Test if the supplied node is on object of type "domelement"
-    *
-    * This function is useful for testing variables that need to be accessed as
-    * domelement objects..
-    *
-    * @param  string The name to test.
-    * @access public
-    */
-    function blnTestElementNode($ndEl) {
-    if(!is_object($ndEl)) return false;
-        (get_class($ndEl) == "domelement") ? $res = true : $res = false;
-        return $res;
+     * Test if the supplied node is on object of type "domelement"
+     *
+     * This function is useful for testing variables that need to be accessed as
+     * domelement objects.
+     *
+     * @param  mixed $ndEl The node to test
+     * @return bool True if domelement, false otherwise
+     */  
+    public function blnTestElementNode($ndEl): bool
+    {
+        return $ndEl instanceof DOMElement;
     }
-    
+
     /**
-    * Do a reliable test for a valid element name
-    *
-    * This function tries to create an element using the supplied name. If it 
-    * fails, then the name is assumed to be invalid.
-    *
-    * @param  string The name to test.
-    * @access public
-    */
-    function blnTestXmlName($strName) {
-    $ndTest = @$this->objDoc->create_element($strName);
-    (is_object($ndTest)) ? $res = true : $res = false;
-        return $res;
+     * Do a reliable test for a valid element name
+     *
+     * This function tries to create an element using the supplied name. If it
+     * fails, then the name is assumed to be invalid.
+     *
+     * @param  string $strName The name to test
+     * @return bool True if valid element name, false otherwise
+     */
+    public function blnTestXmlName(string $strName): bool 
+    {
+        return $this->objDoc->createElement($strName) !== null;
     }
+
 } // END CLASS
 ?>

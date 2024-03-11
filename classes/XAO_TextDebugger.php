@@ -1,4 +1,5 @@
 <?php
+
 /**
 * Plain Text debugger
 *
@@ -16,52 +17,56 @@
 * @link         https://github.com/tezza1971/XAO-PHP
 */
 class TextDebugger {
+
+    public string $strHtml;
     
-    var $strHtml;
+    public array $arrText;
     
-    var $arrText;
+    public int $intLine;
     
-    var $intLine;
+    public int $intPadding = 10;
     
-    var $intPadding = 10;
-    
-    var $strHighlightStyle = 
+    public string $strHighlightStyle = 
         "color: red; font-weight: bold; background: yellow;";
     
-    var $strTextStyle = 
+    public string $strTextStyle = 
         "color: black; font-weight: normal; background: #E0E0E0;";
 
-    var $strBorderStyle = 
+    public string $strBorderStyle = 
         "border: solid red 1px; padding: 10px; font-size: 8pt;";
 
-    function TextDebugger($strText,$intLine = -1) {
-            if($intLine == -1) $this->intPadding = 0;
-            if(file_exists($strText)) {
-                $this->arrText = file($strText);
-            }
-            else {
-                $this->arrText = explode("\n",$strText);
-            }
-            $this->intLine = $intLine;
+    public function __construct(string $strText, int $intLine = -1) {
+        if($intLine == -1) {
+            $this->intPadding = 0;
+        }
+        if(file_exists($strText)) {
+            $this->arrText = file($strText);
+        }
+        else {
+            $this->arrText = explode("\n",$strText);
+        }
+        $this->intLine = $intLine;
     }
     
-    function strGetHtml() {
-            
+    public function strGetHtml(): string {
+        
         if(!strlen($this->strHtml)) {
             $intPadding = $this->intPadding;
             $intHilightLine = $this->intLine;
                 
             $strOut = "<pre style=\"".$this->strBorderStyle."\">Debug dump: ";
             
-            if($intPadding < 0) 
+            if($intPadding < 0) {
                 $intPadding *= -1; // deal with negative numbers
-            if($intPadding != 0) 
+            }
+            if($intPadding != 0) {
                 $strOut .= 
                     "printing ".$intPadding
                     ." lines either side of highlight.\n";
+            }
             
             $intCurrLine = 1;
-            foreach($this->arrText AS $strLine) {
+            foreach($this->arrText as $strLine) {
                 if(
                     (
                         $intHilightLine > -1 
@@ -100,4 +105,3 @@ class TextDebugger {
     }
 }
 
-?>

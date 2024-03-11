@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is just a nonsense file generate to be a placeholder. Writing a formal schema definition is on the TODO list. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Define elements -->
+
+    <xs:element name="root">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="element1" type="xs:string" />
+                <xs:element name="element2" type="xs:integer" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Define complex types -->
+
+    <xs:complexType name="address">
+        <xs:sequence>
+            <xs:element name="street" type="xs:string" />
+            <xs:element name="city" type="xs:string" />
+            <xs:element name="state" type="xs:string" />
+            <xs:element name="zip" type="xs:integer" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Define simple types -->
+
+    <xs:simpleType name="phoneNumber">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{3}-\d{3}-\d{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
+    

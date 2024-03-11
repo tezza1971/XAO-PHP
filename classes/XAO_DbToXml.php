@@ -133,17 +133,16 @@ class DbToXml extends DomDoc {
     *                   from this calss will be appended.
     * @return   void
     */
-    
-    function DbToXml(&$mxdResult,$arrCallBacks = array(),$objDocRef = null,$ndStub = null) {
+    function DbToXml($mxdResult,$arrCallBacks = [],$objDocRef = null,$ndStub = null) {
         $this->arrCallBacks = $arrCallBacks;
-        foreach($this->arrCallBacks AS $fncName) {
-        	    if(!method_exists($this,$fncName)) {
+        foreach($this->arrCallBacks as $fncName) {
+            if(!method_exists($this,$fncName)) {
                 $this->Throw(
                     "DbToXml: Call-back function $fncName does not exist."
                     ,$this->arrSetErrFnc(__FUNCTION__,__LINE__)
                 );
                 return;
-        	    }
+            }
         }
                                         // run the parent constructor
         if(is_object($objDocRef) && is_object($ndStub)) {
@@ -170,130 +169,140 @@ class DbToXml extends DomDoc {
                 );
             }
             else {
-                $this->arrResult =& $objFetcher->arrGetResult();
+                $this->arrResult = $objFetcher->arrGetResult();
             }
         }
         else {
             $this->Throw(
-                "DbToXml: Constructor expects a 2D array (or a supported result 
+                "DbToXml: Constructor expects a 2D array (or a supported result
                 object)."
                 ,$this->arrSetErrFnc(__FUNCTION__,__LINE__)
             );
         }
     }
-    
-    /**
-    * Set the name for the results tag.
-    *
-    * @param    string  Name to use for the root result tag
-    * @return   void
-    * @access   public
-    */
-    function SetResultTagName($strName) {
-        if(strlen($strName)) {
-            $this->strResEl = $strName;
-        }
-    }
 
     /**
-    * Set the name for all the row tags.
-    *
-    * @param    string  Name to use for the root result tag
-    * @return   void
-    * @access   public
-    */
-    function SetRowTagName($strName) {
-        if(strlen($strName)) {
-            $this->strRowEl = $strName;
+* Set the name for the results tag.
+*
+* @param    string  Name to use for the root result tag  
+* @return   void
+* @access   public
+*/
+function SetResultTagName($strName) {
+  if (strlen($strName)) {
+    $this->strResEl = $strName;
+  }
+}
+
+/**
+* Set the name for all the row tags.
+*
+* @param    string  Name to use for the root result tag
+* @return   void
+* @access   public
+*/  
+function SetRowTagName($strName) {
+  if (strlen($strName)) {
+    $this->strRowEl = $strName;
+  }
+}
+
+/**
+* Convert the RDBMS data into XML elements.
+*
+* Iterate over $this->arrResult to first obtain the rows and then the
+* fields which are created and appended as elements using DOM XML methods.
+*
+* @return   void
+* @access   public
+*/
+function Execute() {
+  if (!is_array($this->arrResult)) {
+    $this->Throw(
+      "DbToXml: For some reason, the result set is not formatted as an array." ,
+      $this->arrSetErrFnc(__FUNCTION__, __LINE__)
+    );
+    return;
+  }
+  
+  if (is_object($this->ndStub)) {
+    if (!$this->blnTestElementNode($this->ndStub)) {
+      $this->Throw(
+        "DbToXml: The stub node is not a valid domelement.",
+        $this->arrSetErrFnc(__FUNCTION__, __LINE__)
+      );
+      return;
+    }
+  }
+
+  // iterate through the result list
+  foreach ($this->arrResult as $arrRow) {
+
+    // add a row element for each row in the result list
+    $elRow = $this->objDoc->create_element($this->strRowEl);
+    $ndRow = $this->ndStub->append_child($elRow);
+    $this->RowConstructor($ndRow);
+
+    // iterate through the fields in the row
+    foreach ($arrRow as $fieldName => $fieldVal) {
+
+      // DON'T CREATE EMPTY TAGS!
+      if (strlen($fieldVal) && !is_int($fieldName)) {
+      
+        // add an element for each non-empty field
+        $elField = $this->objDoc->create_element($fieldName);
+        $ndField = $ndRow->append_child($elField);
+
+        // CHECK FOR CALLBACKS
+        if (isset($this->arrCallBacks[$fieldName])) {
+          $funcName = $this->arrCallBacks[$fieldName];
+          $this->$funcName($this->objDoc, $ndField, $fieldVal);
+        } else {
+          $ndField->set_content($fieldVal);
         }
+      }
     }
     
-    /**
-    * Convert the RDBMS data into XML elements.
-    *
-    * Iterate over $this->arrResult to first obtain the rows and then the
-    * fields which are created and appended as elements using DOM XML methods.
-    *
-    * @return   void
-    * @access   public
-    */
-    function Execute() {
-    	    if(!is_array($this->arrResult)) {
-            $this->Throw(
-                "DbToXml: For some reason, the result set is not formatted 
-                [as an] array." ,$this->arrSetErrFnc(__FUNCTION__,__LINE__)
-            );
-            return;
-    	    }
-    	    
-    	    if(is_object($this->ndStub)) {
-    	    	    if(!$this->blnTestElementNode($this->ndStub)) {
-    	    	    	    $this->Throw(
-                    "DbToXml: The stub node is not a valid domelement."
-                    ,$this->arrSetErrFnc(__FUNCTION__,__LINE__)
-                );
-                return;
-    	    	    }
-    	    }
-                                        // iterate through the result list
-        foreach($this->arrResult AS $arrRow) {
-                                        // add a row element for each row in the 
-                                        // result list
-            $elRow = $this->objDoc->create_element($this->strRowEl);
-            $ndRow = $this->ndStub->append_child($elRow);
-            $this->RowConstructor($ndRow);
-                                        // iterate through the fields in the row
-            foreach($arrRow AS $fieldName => $fieldVal) {
-                                        // DON'T CREATE EMPTY TAGS!
-                if(strlen($fieldVal) && !is_int($fieldName)) {
-                                        // add an element for each non-empty field
-                    $elField = $this->objDoc->create_element($fieldName);
-                    $ndField = $ndRow->append_child($elField);
-                                        // CHECK FOR CALLBACKS
-                    if(isset($this->arrCallBacks[$fieldName])) {
-                        $funcName = $this->arrCallBacks[$fieldName];
-                        $this->$funcName($this->objDoc,$ndField,$fieldVal);
-                    }
-                    else {
-                        $ndField->set_content($fieldVal);
-                    }
-                }
-            }
-            $this->RowDestructor($ndRow);
-        }
-    }
+    $this->RowDestructor($ndRow);
+  }
+}
+
+
     
-    
-    
-    /**
+        /**
     * Group records in the output tree by element corresponding to column.
     *
     * This is a very handy way to quickly group output elements by a selected
     * element.
     *
-    * @param    mixed column(s) to use for grouping
+    * @param    mixed $mxdCols column(s) to use for grouping
     */
-    function GroupBy($mxdCols) {
-    	    if(is_array($mxdCols))  $this->arrGroupByCols = $mxdCols;
-    	    if(is_string($mxdCols)) $this->arrGroupByCols[] = $mxdCols;
+    function GroupBy($mxdCols): void {
+        if(is_array($mxdCols)) {
+            $this->arrGroupByCols = $mxdCols;
+        }
+        if(is_string($mxdCols)) {
+            $this->arrGroupByCols[] = $mxdCols;
+        }
         // to do
     }
-    
+
     /**
     * Clean up function to flush existing data.
     *
     * Calling this function is needed if the constructor is to be called more
     * than once.
     *
-    * @return   void
-    */
-    function Reset() {
-        $this->arrCallBacks=null;
-        $this->arrResult=array();
-        $this->ndStub=null;
+    * @return void
+    */ 
+    function Reset(): void {
+        $this->arrCallBacks = null;
+        $this->arrResult = [];
+        $this->ndStub = null;
         // now the constructor will need to be called again before this
-        // object instance can be used further.
+        // object instance can be used further. 
     }
+
 
     /**
     * Row Contructor
@@ -338,7 +347,7 @@ class DbToXml extends DomDoc {
     * @return   void
     */
     function unixTsToReadable(&$ndField,$intTs) {
-        $intTs = (integer)$intTs;
+        $intTs = (int)$intTs;
         if($intTs < 0) return;
         $ndField->set_attribute("unixTS",$intTs);
         $ndField->set_attribute("ODBCformat",date("Y-m-d H:i:s",$intTs));
@@ -348,6 +357,7 @@ class DbToXml extends DomDoc {
         $ndField->set_attribute("hour",date("H",$intTs));
         $ndField->set_attribute("min",date("i",$intTs));
     }
+
 
     /**
     * ODBC timestamp date call-back mutator function

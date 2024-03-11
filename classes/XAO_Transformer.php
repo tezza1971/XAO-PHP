@@ -153,120 +153,112 @@ class Transformer extends XaoRoot {
     * @return   void
     * @access   public
     */
-    function Transformer(&$mxdSrc,&$mxdStyle) {
-        
-                                        // set up source XML document
+    function Transformer(&$mxdSrc,&$mxdStyle) { 
+        // set up source XML document
         if(is_string($mxdSrc)) {
 
-            $objDomFactory =& new DomFactory($mxdSrc);
+                $objDomFactory = DomFactory($mxdSrc);
+                
+                if(strlen($objDomFactory->strErrorMsg)) {
+                    $this->strDebugData = $objDomFactory->strDebugData;
+                    $this->Throw(
+                        $objDomFactory->strErrorMsgFull,
+                        $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+                    );
+                }
+                else {
+                    $this->objSrc = $objDomFactory->objGetObjDoc();
+                }
+            }
+            elseif(is_object($mxdSrc)) {
+                $this->objSrc = $mxdSrc;
+                
+                if(!$this->objSrc->document_element()) {
+                    $this->Throw(
+                        "Transformer: DOM XML object does not have a root element",
+                        $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+                    );
+                }
+            }
+            else {
+                if(is_null($mxdSrc)) {
+                    $this->Throw(
+                        "Transformer: NULL source XML argument",
+                        $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+                    );
+                }
+                else {
+                    $this->Throw(
+                        "Transformer: Invalid source XML argument",
+                        $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+                    );
+                }
+            }
             
-            if(strlen($objDomFactory->strErrorMsg)) {
-                $this->strDebugData = $objDomFactory->strDebugData;
-                $this->Throw(
-                    $objDomFactory->strErrorMsgFull,
-                    $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-                );
+                                                // set up transformation document
+            if(is_string($mxdStyle)) {
+                
+                $objDomFactory = DomFactory($mxdStyle);
+                
+                if(strlen($objDomFactory->strErrorMsg)) {
+                    $this->strDebugData = $objDomFactory->strDebugData;
+                    $this->Throw(
+                        $objDomFactory->strErrorMsgFull,
+                        $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+                    );
+                }
+                else {
+                    $this->objStyle = $objDomFactory->objGetObjDoc();
+                    $this->_uriStyleSheet = $objDomFactory->uriContextFile;
+                }
+            }
+            elseif(is_object($mxdStyle)) {
+                $this->objStyle = $mxdStyle;
             }
             else {
-                $this->objSrc =& $objDomFactory->objGetObjDoc();
+                if(is_null($mxdStyle)) {
+                    $this->Throw(
+                        "Transformer: NULL stylesheet argument",
+                        $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+                    );
+                }
+                else {
+                    $this->Throw(
+                        "Transformer: Invalid stylesheet argument",
+                        $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+                    );
+                }
             }
-        }
-        elseif(is_object($mxdSrc)) {
-            $ndTest = $mxdSrc->document_element()
-                OR $this->Throw(
-                    "Transformer: Object is not a PHP DOM XML object.",
-                    $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-                );
-            if(is_object($ndTest)) {
-                $this->objSrc =& $mxdSrc;
-                //var_dump($ndTest);
-                //die();
-            }
-            else {
-                $this->Throw(
-                    "Transformer: DOM XML object does not have a root element",
-                    $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-                );
-            }
-        }
-        else {
-            if(is_null($mxdSrc)) {
-                $this->Throw(
-                    "Transformer: NULL source XML argument",
-                    $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-                );
-            }
-            else {
-                $this->Throw(
-                    "Transformer: Invalid source XML argument",
-                    $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-                );
-            }
-        }
-        
-                                        // set up transformation document
-        if(is_string($mxdStyle)) {
             
-            $objDomFactory =& new DomFactory($mxdStyle);
+            if(is_object($this->objStyle)) {
+                $this->ndStyleRoot = $this->objStyle->document_element();
+            }
             
-            if(strlen($objDomFactory->strErrorMsg)) {
-                $this->strDebugData = $objDomFactory->strDebugData;
-                $this->Throw(
-                    $objDomFactory->strErrorMsgFull,
-                    $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-                );
+            if(is_object($this->objSrc)) {
+                $this->ndSrcRoot = $this->objSrc->document_element();
             }
-            else {
-                $this->objStyle =& $objDomFactory->objGetObjDoc();
-            }
-            $this->_uriStyleSheet = $objDomFactory->uriContextFile;
-        }
-        elseif(is_object($mxdStyle)) {
-            $this->objStyle =& $mxdStyle;
-        }
-        else {
-            if(is_null($mxdStyle)) {
-                $this->Throw(
-                    "Transformer: NULL stylesheet argument",
-                    $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-                );
-            }
-            else {
-                $this->Throw(
-                    "Transformer: Invalid stylesheet argument",
-                    $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-                );
-            }
-        }
-        
-        if(is_object($this->objStyle)) {
-            $this->ndStyleRoot =& $this->objStyle->document_element();
-        }
-        
-        if(is_object($this->objSrc)) {
-            $this->ndSrcRoot =& $this->objSrc->document_element();
-        }
     }
     
+
     function Throw($strErrMsg,$arrAttribs = null) {
         parent::Throw($strErrMsg,$arrAttribs);
-                                        // This is probably the ONLY place you 
-                                        // will see a die() statement. This is
-                                        // because normally, errors are 
-                                        // displayed by way of a stylsheet 
-                                        // template. However if transformation
-                                        // cannot take place, then the exception
-                                        // will never be displayed.
-                                        // Exceptions should never be dealt with
-                                        // like this. This is a last resort.
-        if(strlen(trim($this->strDebugData))) 
+            // This is probably the ONLY place you 
+            // will see a die() statement. This is
+            // because normally, errors are 
+            // displayed by way of a stylsheet 
+            // template. However if transformation
+            // cannot take place, then the exception
+            // will never be displayed.
+            // Exceptions should never be dealt with
+            // like this. This is a last resort.
+        if(strlen(trim($this->strDebugData)))
             die("<br />\n".$this->strError.$this->strDebugData);
     }
-    
+
     function SetXslParam($strName,$strValue) {
-                                        // This test should be improved to use
-                                        // a regex which properly check for 
-                                        // stylesheet param name legality
+            // This test should be improved to use
+            // a regex which properly check for 
+            // stylesheet param name legality
         if($this->blnTestSafeName($strName)) {
             $this->arrXslParams[$strName] = $strValue;
         }
@@ -551,13 +543,13 @@ class Transformer extends XaoRoot {
                                         // (avoid confusion).
             if(isset($arrSabErrData["line"]) && $blnHaveTheRightFile) {
                 $objDebugData =& 
-                    new TextDebugger($xslData,$arrSabErrData["line"]);
+                    TextDebugger($xslData,$arrSabErrData["line"]);
                                         // populate the all-important debug data
                 $this->strDebugData =& $objDebugData->strGetHtml();
             }
             elseif(preg_match("/XML parser error/i",$arrSabErrData["msg"])) {
                 $objDebugData =& 
-                    new TextDebugger($this->objSrc->dump_mem(true));
+                    TextDebugger($this->objSrc->dump_mem(true));
                                         // populate the all-important debug data
                 $this->strDebugData =& $objDebugData->strGetHtml();
             }

@@ -261,14 +261,12 @@ class AppDoc extends DomDoc {
         $this->DomDoc($mxdStarter,$intUse);
                                         // automatically inject the XAO 
                                         // namespace into the document root
-        /* 
-        */
-        
+
         if(is_object($this->ndRoot)) {
-            $this->ndRoot->set_attribute(
-                "xmlns:".$this->strXaoNamespacePrefix,
+            $this->ndRoot->setAttributeNS(
+                $this->strXaoNamespacePrefix,
                 $this->idXaoNamespace
-            );
+            ); 
         }
     }
     
@@ -289,55 +287,60 @@ class AppDoc extends DomDoc {
     * @access   public
     */
     function &ndSetStylePI($uriStyleSheet,$blnCheck = true) {
-        $this->_TestForConstuctor();
-        if($blnCheck) {
-            if(!file_exists($uriStyleSheet)) {
-                $this->Throw(
-                    "ndSetStylePI: The stylsheet you specified: <strong>"
-                    .$uriStyleSheet."</strong> does not exist. Set local file "
-                    ."checking (parsing) to false in the second argument of "
-                    ."DomDoc::ndSetStylePI() if the file exists remotely or "
-                    ."you want to override checking.",
-                    $this->arrSetErrFnc(__FUNCTION__,__LINE__),
-                    true
-                );
-                return false;
-            }
-        }
-        $this->_uriStyleSheet = $uriStyleSheet;
-        $strPiCont = ' type="text/xsl" href="'.$this->_uriStyleSheet.'"';
-        $strPiTarget = 'xml-stylesheet';
-          $piStyle = $this->objDoc->create_processing_instruction(
-            $strPiTarget, $strPiCont
-        );
-        $this->_uriStyleSheet = str_replace("\\","/",$this->_uriStyleSheet);
-        if(!is_object($piStyle)) {
+    $this->_TestForConstuctor();
+    if($blnCheck) {
+        if(!file_exists($uriStyleSheet)) {
             $this->Throw(
-                "ndSetStylePI: Unable to create processing instruction using "
-                ."target of ".$strPiTarget." and content of ".$strPiCont,
-                $this->arrSetErrFnc(__FUNCTION__,__LINE__),true
+                "ndSetStylePI: The stylsheet you specified: <strong>"
+                .$uriStyleSheet."</strong> does not exist. Set local file "
+                ."checking (parsing) to false in the second argument of "
+                ."DomDoc::ndSetStylePI() if the file exists remotely or "
+                ."you want to override checking.",
+                $this->arrSetErrFnc(__FUNCTION__,__LINE__),
+                true
             );
             return false;
         }
-        else{
-                                        // if one exists, replace it
-            if(is_object($this->ndStylePi)) {
-                $this->ndStylePi->replace_node($piStyle);
-            }
-                                        // otherwise create it
-            else {
-                $this->ndStylePi = $this->objDoc->insert_before(
-                    $piStyle, $this->ndRoot
-                );
-            }
+    }
+    $this->_uriStyleSheet = $uriStyleSheet;
+    $strPiCont = ' type="text/xsl" href="'.$this->_uriStyleSheet.'"';
+    $strPiTarget = 'xml-stylesheet';
+
+    // Optimize for PHP 8
+    $piStyle = $this->objDoc->createProcessingInstruction(
+        $strPiTarget, 
+        $strPiCont
+    );
+    
+    $this->_uriStyleSheet = str_replace("\\","/",$this->_uriStyleSheet);
+    if(!$piStyle) {
+        $this->Throw(
+            "ndSetStylePI: Unable to create processing instruction using "
+            ."target of ".$strPiTarget." and content of ".$strPiCont,
+            $this->arrSetErrFnc(__FUNCTION__,__LINE__),true
+        );
+        return false;
+    }
+    else {
+        // if one exists, replace it
+        if($this->ndStylePi) {
+            $this->ndStylePi->replaceNode($piStyle);
         }
-        if(is_object($this->ndStylePi)) {
-            return $this->ndStylePi;
-        }
+        // otherwise create it
         else {
-            return false;
+            $this->ndStylePi = $this->objDoc->insertBefore(
+                $piStyle, 
+                $this->ndRoot
+            );
         }
     }
+    if($this->ndStylePi) {
+        return $this->ndStylePi;
+    }
+    else {
+        return false;
+    }
+}
 
     /**
     * Get the absolute system location of the internal error stylsheet.
@@ -351,8 +354,9 @@ class AppDoc extends DomDoc {
     */
     function uriGetInternalErrorStyle() {
         $this->_TestForConstuctor();
-        return dirname(__FILE__)."/".$this->_uriXaoErrorStyle;
+        return dirname(__DIR__)."/".$this->_uriXaoErrorStyle;
     }
+
     
     /**
     * Set the name of the internal error stylsheet using in debug mode
@@ -385,7 +389,7 @@ class AppDoc extends DomDoc {
     * @access   public
     */
     function Transform($arrCacheParams = null) {
-    $arrCacheParams = array();
+                                            $arrCacheParams = array();
         $this->_TestForConstuctor();
                                         // $this->strAltPayload is not modified
                                         // if the browser is to transform the
@@ -393,7 +397,7 @@ class AppDoc extends DomDoc {
         if(!$this->blnClientSideTransform) {
         
                                         // Associate a new transformer
-            $objXT =& new Transformer($this->objDoc,$this->_uriStyleSheet);
+            $objXT =& Transformer($this->objDoc,$this->_uriStyleSheet);
                                         // pass on transform properties
             $objXT->strXsltProcessor      = $this->strXsltProcessor;
             $objXT->strXaoNamespacePrefix = $this->strXaoNamespacePrefix;
@@ -481,48 +485,49 @@ class AppDoc extends DomDoc {
     * @access   public
     */
     function Send($strAlt = "") {
-        
-        $this->_TestForConstuctor();
-                                        // This method may well be the last one
-                                        // that is called by the host PHP script
-                                        // in which case, try and collect all
-                                        // user errors.
-        $this->_TrapErrors();
-        
-        if(strlen($strAlt)) $this->strAltPayload = $strAlt;
-                                        // If this object is running in debug
-                                        // mode, then special XAO URL directives
-                                        // can be acted on.
-        if($this->blnDebug) {
-            global $_GET;
-                                        // this debug directive causes a source
-                                        // dump of the XML content regardless of
-                                        // any alternate payload.
-            if(isset($_GET["xao:XML"])) {
-                //$this->strAltPayload = $this->xmlGetDoc();
-                header("Content-Type: text/plain");
-                die($this->xmlGetDoc());
-            }
-            elseif(isset($_GET["xao:Text"])) {
-                $this->strForceContentType = "text/plain";
-            }
+    
+    $this->_TestForConstuctor();
+                                    // This method may well be the last one
+                                    // that is called by the host PHP script
+                                    // in which case, try and collect all
+                                    // user errors.
+    $this->_TrapErrors();
+    
+    if(strlen($strAlt)) $this->strAltPayload = $strAlt;
+                                    // If this object is running in debug
+                                    // mode, then special XAO URL directives
+                                    // can be acted on.
+    if($this->blnDebug) {
+        $_GET = $_GET ?? [];
+                                    // this debug directive causes a source
+                                    // dump of the XML content regardless of
+                                    // any alternate payload.
+        if(isset($_GET["xao:XML"])) {
+            //$this->strAltPayload = $this->xmlGetDoc();
+            header("Content-Type: text/plain");
+            die($this->xmlGetDoc());
         }
-        
-        if(strlen($this->strAltPayload)) {
-            if(strlen($this->strForceContentType))
-                header("Content-Type: ".$this->strForceContentType);
-            elseif(substr($this->strAltPayload,1,4) == "?xml")
-                header("Content-Type: text/xml");
-            echo $this->strAltPayload;
-        }
-        else {
-            if(strlen($this->strForceContentType))
-                header("Content-Type: ".$this->strForceContentType);
-            else
-                header("Content-Type: text/xml");
-            echo $this->xmlGetDoc();
+        elseif(isset($_GET["xao:Text"])) {
+            $this->strForceContentType = "text/plain";
         }
     }
+    
+    if(strlen($this->strAltPayload)) {
+        if(strlen($this->strForceContentType))
+            header("Content-Type: ".$this->strForceContentType);
+        elseif(substr($this->strAltPayload,1,4) == "?xml")
+            header("Content-Type: text/xml");
+        echo $this->strAltPayload;
+    }
+    else {
+        if(strlen($this->strForceContentType))
+            header("Content-Type: ".$this->strForceContentType);
+        else
+            header("Content-Type: text/xml");
+        echo $this->xmlGetDoc();
+    }
+}
+
     
     /**
     * Return data that would be destined for the client (in current state)

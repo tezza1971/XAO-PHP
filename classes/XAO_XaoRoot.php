@@ -179,5 +179,4 @@ class XaoRoot {
         return true;
     }
 }
-
 ?>
