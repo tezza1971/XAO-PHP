@@ -1,0 +1,603 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Docs For Class DomFactory</title>
+	<link rel="stylesheet" type="text/css" href="../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left">
+        Documentation automatically generated from the source-code
+        using <a href="http://phpdocu.sourceforge.net/" title="Go to the phpDocumentor homepage.">phpDocumentor</a>.
+       <div>Official Homepage: <a href="http://xao-php.sourceforge.net">xao-php.sourceforge.net</a></div>
+    </td>
+    <td class="header-top-right">XAO<div class="header-top-right-subpackage"></div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+          <a href="http://xao-php.sourceforge.net">Official homepage</a> |
+          <a href="../index.html">API home</a> |
+  		  <a href="../classtrees_XAO.html" class="menu">class tree: XAO</a> |
+		  <a href="../elementindex_XAO.html" class="menu">index: XAO</a> |
+		  <a href="../elementindex.html" class="menu">all elements</a>
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">XAO</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../li_XAO.html">XAO</a><br />
+      	</div>
+      <br />
+                
+                                    <b>Classes:</b><br />
+                <div class="package">
+		    		<a href="../XAO/AppDoc.html">AppDoc</a>    	 <br />
+	    		<a href="../XAO/DbToXml.html">DbToXml</a>    	 <br />
+	    		<a href="../XAO/DomDoc.html">DomDoc</a>    	 <br />
+	    		<a href="../XAO/DomFactory.html">DomFactory</a>    	 <br />
+	    		<a href="../XAO/Exceptions.html">Exceptions</a>    	 <br />
+	    		<a href="../XAO/ResultFetcher.html">ResultFetcher</a>    	 <br />
+	    		<a href="../XAO/TextDebugger.html">TextDebugger</a>    	 <br />
+	    		<a href="../XAO/Transformer.html">Transformer</a>    	 <br />
+	    		<a href="../XAO/XaoRoot.html">XaoRoot</a>    	 <br />
+	  </div>
+                    <br />
+                        <b>Files:</b><br />
+                <div class="package">
+				<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_AppDoc_php.html">XAO_AppDoc.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DbToXml_php.html">XAO_DbToXml.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DbToXml_ResultFetcher_php.html">XAO_DbToXml_ResultFetcher.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DomDoc_php.html">XAO_DomDoc.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DomFactory_php.html">XAO_DomFactory.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_Exceptions_php.html">XAO_Exceptions.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_TextDebugger_php.html">XAO_TextDebugger.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_Transformer_php.html">XAO_Transformer.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_XaoRoot_php.html">XAO_XaoRoot.php</a></span><br />
+	  </div>
+                    </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: DomFactory</h1>
+Source Location: Program_Root/XAO_DomFactory.php<br /><br />
+
+<h2 class="class-name">Class DomFactory</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Class Overview</div>
+	<div class="nav-bar">
+					<span class="disabled">Class Overview</span> |
+									<a href="#sec-inherited">Inherited Properties and Methods</a>
+			|											<a href="#sec-var-summary">Propertys Summary</a> | <a href="#sec-vars">Properties Detail</a>
+						|											<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+						</div>
+	<div class="info-box-body">
+		<table width="100%" border="0">
+		<tr><td valign="top" width="60%" class="class-overview">
+
+		<p align="center" class="short-description"><strong>Quick XML Parser and Debugger
+</strong></p>
+<span class="description"><p>This main job of this class is to test for XML well-formedness. Secondly, it  is to provide highly useful debugging output in the event that the input text  fails the wellformedness test.</p></span>
+		<p class="notes">
+			Located in <a class="field" href="_classes_XAO_DomFactory_php.html">Program_Root/XAO_DomFactory.php</a> [<span class="field">line <a href="..//__filesource/fsource_XAO__XAO_DomFactory.php.html#a48">48</a></span>]
+		</p>
+
+		
+		<pre><a href="../XAO/XaoRoot.html">XaoRoot</a>
+   |
+   --DomFactory</pre>
+
+		
+		
+		
+		</td>
+
+				<td valign="top" width="20%" class="class-overview">
+		<p align="center" class="short-description"><strong><a href="#sec_vars">Properties</a></strong></p>
+		<ul>
+		  		  <li><a href="../XAO/DomFactory.html#var$intErrorLine">$intErrorLine</a></li>
+		  		  <li><a href="../XAO/DomFactory.html#var$objDoc">$objDoc</a></li>
+		  		  <li><a href="../XAO/DomFactory.html#var$strErrorMsg">$strErrorMsg</a></li>
+		  		  <li><a href="../XAO/DomFactory.html#var$strErrorMsgFull">$strErrorMsgFull</a></li>
+		  		  <li><a href="../XAO/DomFactory.html#var$uriContextFile">$uriContextFile</a></li>
+		  		</ul>
+		</td>
+		
+				<td valign="top" width="20%" class="class-overview">
+		<p align="center" class="short-description"><strong><a href="#sec_methods">Methods</a></strong></p>
+		<ul>
+		  		  <li><a href="../XAO/DomFactory.html#methodDomFactory">DomFactory</a></li>
+		  		  <li><a href="../XAO/DomFactory.html#methodblnSaxParse">blnSaxParse</a></li>
+		  		  <li><a href="../XAO/DomFactory.html#methodobjGetObjDoc">objGetObjDoc</a></li>
+		  		  <li><a href="../XAO/DomFactory.html#methodThrow">Throw</a></li>
+		  		  <li><a href="../XAO/DomFactory.html#method_objDomParseData">_objDomParseData</a></li>
+		  		  <li><a href="../XAO/DomFactory.html#method_objDomParseFile">_objDomParseFile</a></li>
+		  		</ul>
+		</td>
+		
+		</tr></table>
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+</div>
+
+
+	<a name="sec-inherited"></a>
+	<div class="info-box">
+		<div class="info-box-title">Inherited Properties and Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+						|			<span class="disabled">Inherited Properties and Methods</span>
+			|												<a href="#sec-var-summary">Propertys Summary</a> | <a href="#sec-vars">Properties Detail</a>
+								|															<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+									</div>
+		<div class="info-box-body">
+			<table cellpadding="2" cellspacing="0" class="class-table">
+				<tr>
+					<th class="class-table-header" width="30%">Inherited Properties</th>
+					<th class="class-table-header" width="70%">Inherited Methods</th>
+				</tr>
+				<tr>
+					<td width="30%">
+													<p>Inherited From <span class="classname"><a href="../XAO/XaoRoot.html">XaoRoot</a></span></p>
+							<blockquote>
+								<dl>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$arrCacheParams">XaoRoot::$arrCacheParams</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$fncErrCallbackFunc">XaoRoot::$fncErrCallbackFunc</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$idXaoNamespace">XaoRoot::$idXaoNamespace</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$strDebugData">XaoRoot::$strDebugData</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$strError">XaoRoot::$strError</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$strXaoNamespacePrefix">XaoRoot::$strXaoNamespacePrefix</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																	</dl>
+							</blockquote>
+											</td>
+					<td width="70%">
+													<p>Inherited From <span class="classname"><a href="../XAO/XaoRoot.html">XaoRoot</a></span></p>
+							<blockquote>
+								<dl>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#methodarrSetErrFnc">XaoRoot::arrSetErrFnc()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#methodblnTestSafeName">XaoRoot::blnTestSafeName()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#methodThrow">XaoRoot::Throw()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Generic/default error handler.</span>
+										</dd>
+																	</dl>
+							</blockquote>
+											</td>
+				</tr>
+			</table>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Property Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|						<span class="disabled">Property Summary</span> | <a href="#sec-vars">Properties Detail</a>
+							|
+									<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+									</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+			<table border="0" cellspacing="0" cellpadding="0" class="var-summary">
+							<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">mixed</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$intErrorLine" title="details" class="var-name-summary">$intErrorLine</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description"></td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">mixed</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$objDoc" title="details" class="var-name-summary">$objDoc</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description"></td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">mixed</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$strErrorMsg" title="details" class="var-name-summary">$strErrorMsg</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description"></td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">mixed</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$strErrorMsgFull" title="details" class="var-name-summary">$strErrorMsgFull</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description"></td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">mixed</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$uriContextFile" title="details" class="var-name-summary">$uriContextFile</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description"></td></tr>
+				</div>
+								</table>
+			</div>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|															<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+								|
+						<span class="disabled">Method Summary</span> | <a href="#sec-methods">Methods Detail</a>
+		</div>
+		<div class="info-box-body">
+			<div class="method-summary">
+				<table border="0" cellspacing="0" cellpadding="0" class="method-summary">
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">DomFactory</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#DomFactory" title="details" class="method-name">DomFactory</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition"></td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#blnSaxParse" title="details" class="method-name">blnSaxParse</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition"></td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#objGetObjDoc" title="details" class="method-name">&amp;objGetObjDoc</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition"></td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#Throw" title="details" class="method-name">Throw</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition"></td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#_objDomParseData" title="details" class="method-name">&amp;_objDomParseData</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition"></td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#_objDomParseFile" title="details" class="method-name">&amp;_objDomParseFile</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition"></td></tr>
+				</div>
+								</table>
+			</div>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Properties</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|										<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+			
+							|
+									<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+									</div>
+		<div class="info-box-body">
+			<a name="var$intErrorLine" id="$intErrorLine"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>&nbsp;&nbsp;
+			<span class="var-name">$intErrorLine</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_DomFactory.php.html#a52">52</a>]</span>
+		</span>
+	</div>
+
+		
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$objDoc" id="$objDoc"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>&nbsp;&nbsp;
+			<span class="var-name">$objDoc</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_DomFactory.php.html#a50">50</a>]</span>
+		</span>
+	</div>
+
+		
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$strErrorMsg" id="$strErrorMsg"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>&nbsp;&nbsp;
+			<span class="var-name">$strErrorMsg</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_DomFactory.php.html#a56">56</a>]</span>
+		</span>
+	</div>
+
+		
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$strErrorMsgFull" id="$strErrorMsgFull"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>&nbsp;&nbsp;
+			<span class="var-name">$strErrorMsgFull</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_DomFactory.php.html#a58">58</a>]</span>
+		</span>
+	</div>
+
+		
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$uriContextFile" id="$uriContextFile"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>&nbsp;&nbsp;
+			<span class="var-name">$uriContextFile</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_DomFactory.php.html#a54">54</a>]</span>
+		</span>
+	</div>
+
+		
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+		</div>
+	</div>
+
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|															<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+														<a href="#sec-method-summary">Method Summary</a> | <span class="disabled">Methods Detail</span>
+					</div>
+		<div class="info-box-body">
+			<a name='method_detail'></a>
+<a name="methodDomFactory" id="DomFactory"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">Constructor DomFactory</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_DomFactory.php.html#a60">60</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>DomFactory DomFactory(
+mixed
+$strTarget&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	
+	<br />
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodblnSaxParse" id="blnSaxParse"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">blnSaxParse</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_DomFactory.php.html#a155">155</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void blnSaxParse(
+mixed
+$strData&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	
+	<br />
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodobjGetObjDoc" id="objGetObjDoc"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">objGetObjDoc</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_DomFactory.php.html#a70">70</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void &amp;objGetObjDoc(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	
+	<br />
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodThrow" id="Throw"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">Throw</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_DomFactory.php.html#a186">186</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void Throw(
+mixed
+$strErrMsg, mixed
+$arrErrAttribs&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	
+	<br />
+	
+
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../XAO/XaoRoot.html#methodThrow">XaoRoot::Throw()</a></dt>
+						<dd>Generic/default error handler.</dd>
+					</dl>
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="method_objDomParseData" id="_objDomParseData"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">_objDomParseData</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_DomFactory.php.html#a113">113</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void &amp;_objDomParseData(
+mixed
+$strSrc&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	
+	<br />
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="method_objDomParseFile" id="_objDomParseFile"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">_objDomParseFile</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_DomFactory.php.html#a74">74</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void &amp;_objDomParseFile(
+mixed
+$uriSrc&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	
+	<br />
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+		</div>
+	</div>
+
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Fri,  3 Oct 2003 19:09:44 +1000 by <a href="http://www.phpdoc.org">phpDocumentor 1.2.2</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article>
+<h2>Debugging with URL Overrides</h2>
+<p>This tutorial uses the sample code from the <a 
+href="?article=basics/introduction">introduction</a> tutorial. 
+Remember how we set the <span class="code">$objAppDoc->blnDebug = true;</span>, 
+well it allows us to use what we
+call <strong>&quot;URL overrides&quot;</strong> - special URL parameters. See 
+the web address used in the LIVE-OUTPUT block below. This feature is very
+very useful during the course of development.</p>
+<tutor:highlightFile src="introduction/index.php?xao:XML" type="LIVE-OUTPUT" />
+<h3>Debug XML Source</h3>
+<p>Note that you can preview the XML source content before it is transformed
+by passing it the following URL pareter name (doesn't need a value).</p>
+<p><span class="code">xao:XML</span></p>
+<p>For this to work, we had to set <span class="code">$objAppDoc->blnDebug = true;</span></p>
+<p>Your browser may transform it for you - in which case you will have to 
+<em>view-source</em>. IE ignores the &quot;ContentType: text/plain;&quot; header
+which is sent when using the xao:XML override.
+</p>
+<br clear="all" />
+<tutor:highlightFile src="introduction/index.php?xao:XSL" type="LIVE-OUTPUT" />
+<h3>Debug XSL Stylesheet</h3>
+<p>Same can be done to preview the XSL being used. This is useful when the
+stylesheet is manipulated programatically before use or the stylesheet is
+dynamically generated. Use the following URL override:</p>
+<p><span class="code">xao:XSL</span></p>
+<br clear="all" />
+<h3>Security issues</h3>
+<p>Note that URL overrides are not available until debuging is switched on.</p>
+</article>

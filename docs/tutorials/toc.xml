@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<toc>
+    <p class="overview">
+        These tutorials constitue the <em>user guide</em> of XAO. The tutorial 
+        format lends itself to the &quot;how-to&quot; documentation style. When 
+        reading these tutorials, copy the source code and try it out with some of 
+        your own variations. These tutorials are designed to complement the 
+        <a href="../api/index.html">API documentation</a> which serves as a 
+        <em>reference</em>. All other information
+        (such as <a href="http://xao-php.sourceforge.net/ctrl.php?op=faq">FAQ</a>s) 
+        regarding the library itself can be found on the 
+        <a href="http://xao-php.sourceforge.net/" target="_blank">official 
+        website</a>.
+    </p>
+    <section name="basics">
+        <article name="introduction">
+            <p class="overview">
+                This tutorial will introduce you to the basics of using XAO as a framework.
+                By the end of this lesson, you will have a good understanding of the
+                principles behind the XAO approach. This page should be enough to get you
+                started on the road to developing object oriented application applications 
+                based on <a href="http://w3.org" target="_blank">W3C</a> standards. 
+                The rest of the XAO tutorials consist of optional How-To's. The API
+                documentation (also embedded in the source) should provide an adequate
+                reference.
+            </p>
+        </article>
+        <article name="urlOverrides">
+            <p class="overview">
+                XAO makes debugging that little bit easier by providing XML source
+                previews by way of <em>URL overrides</em>. Sometimes you need to
+                see the source XML tree that you're generating before it gets
+                transformed. You could comment out bits of your code, but it's
+                easier to have another browser window open which contains a URL
+                override added to it's adress.
+            </p>
+        </article>
+        <article name="dbAccess">
+            <p class="overview">
+                90% of web applications use a relational database system and so processing
+                results from a relational database is a primary feature of XAO. Notice that
+                you have to obtain the results, XAO will then convert it to XML with a plethora
+                of powerful options for you to &quot;enhance&quot; the XML result tree.
+            </p>
+        </article>
+    </section>
+    <section name="intermediate">
+        <article name="inheritance">
+            <p class="overview">
+                XAO's main classes, DomDoc, AppDoc, DbToXml, Xindice, are 
+                designed to be inherited (<a 
+                href="http://www.php.net/manual/en/keyword.extends.php" 
+                target="_blank">extended</a>). After all, good application 
+                design for medium to large applications relies on inheritance. 
+                One of the benefits of inheritance is that you can centralise 
+                common operations in parent classes. Since XAO specialises in 
+                un-burdening developers of <em>common operations</em>, it 
+                follows that XAO objects make good parent classes. This is why 
+                XAO applications don't necesarily need a controller - you 
+                already have <em>centralisation</em> through inheritance. You 
+                don't need a model-view-controller framework (and it's 
+                accompanying restrictions), your view is already separated out 
+                and handled by your XSLT templates.
+            </p>
+        </article>
+    </section>
+    <!--
+    <section name="advanced">
+        <article name="sql2xml">
+            <p class="overview">
+                DbToXml is an extremely powerful class when you know how to use it.<br /><br />
+                It allows you to get more that just tabular results data, you can use it's
+                <em>call-back function</em> facilities to mutate result fields and create
+                complex results XML trees from a single tabular database results set.
+            </p>
+        </article>
+    </section>
+    -->
+</toc>

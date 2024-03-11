@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article>
+    <h2>Always inherit</h2>
+    <p>The examples in the <em>basics</em> section of this tutorial demonstrate
+    the use of some basic classes by using them directly, but this is no way
+    to build applications - of any size.</p>
+    <p>This tutorial is not a discussion on the finer points of good design.
+    What we will do is demonstrate how an application attaches it's  own 
+    application specifc customisations to XAO functionality.</p>
+    
+    <h3>TODO:....</h3>
+    <p>This tute will be completed in the beta release.</p>
+</article>

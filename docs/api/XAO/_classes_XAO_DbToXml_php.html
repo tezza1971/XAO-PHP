@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Docs for page XAO_DbToXml.php</title>
+	<link rel="stylesheet" type="text/css" href="../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left">
+        Documentation automatically generated from the source-code
+        using <a href="http://phpdocu.sourceforge.net/" title="Go to the phpDocumentor homepage.">phpDocumentor</a>.
+       <div>Official Homepage: <a href="http://xao-php.sourceforge.net">xao-php.sourceforge.net</a></div>
+    </td>
+    <td class="header-top-right">XAO<div class="header-top-right-subpackage"></div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+          <a href="http://xao-php.sourceforge.net">Official homepage</a> |
+          <a href="../index.html">API home</a> |
+  		  <a href="../classtrees_XAO.html" class="menu">class tree: XAO</a> |
+		  <a href="../elementindex_XAO.html" class="menu">index: XAO</a> |
+		  <a href="../elementindex.html" class="menu">all elements</a>
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">XAO</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../li_XAO.html">XAO</a><br />
+      	</div>
+      <br />
+                
+                                    <b>Classes:</b><br />
+                <div class="package">
+		    		<a href="../XAO/AppDoc.html">AppDoc</a>    	 <br />
+	    		<a href="../XAO/DbToXml.html">DbToXml</a>    	 <br />
+	    		<a href="../XAO/DomDoc.html">DomDoc</a>    	 <br />
+	    		<a href="../XAO/DomFactory.html">DomFactory</a>    	 <br />
+	    		<a href="../XAO/Exceptions.html">Exceptions</a>    	 <br />
+	    		<a href="../XAO/ResultFetcher.html">ResultFetcher</a>    	 <br />
+	    		<a href="../XAO/TextDebugger.html">TextDebugger</a>    	 <br />
+	    		<a href="../XAO/Transformer.html">Transformer</a>    	 <br />
+	    		<a href="../XAO/XaoRoot.html">XaoRoot</a>    	 <br />
+	  </div>
+                    <br />
+                        <b>Files:</b><br />
+                <div class="package">
+				<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_AppDoc_php.html">XAO_AppDoc.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DbToXml_php.html">XAO_DbToXml.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DbToXml_ResultFetcher_php.html">XAO_DbToXml_ResultFetcher.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DomDoc_php.html">XAO_DomDoc.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DomFactory_php.html">XAO_DomFactory.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_Exceptions_php.html">XAO_Exceptions.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_TextDebugger_php.html">XAO_TextDebugger.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_Transformer_php.html">XAO_Transformer.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_XaoRoot_php.html">XAO_XaoRoot.php</a></span><br />
+	  </div>
+                    </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Procedural File: XAO_DbToXml.php</h1>
+Source Location: Program_Root/XAO_DbToXml.php<br /><br />
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Page Details</div>
+	<div class="nav-bar">
+					<span class="disabled">Page Details</span> |
+							<a href="#sec-classes">Classes</a>
+			|							<a href="#sec-includes">Includes</a>
+												</div>
+	<div class="info-box-body">
+		<p align="center" class="short-description"><strong>XAO_DbToXml.php
+</strong></p>
+<span class="description"><p>This script is pivotal to developers who wish to retrieve content from a  relational database. It's primary function is to convert tabular results sets  to XML format. It does more than that however, see the class doc comments and  tutorials for information on how to leverage it's awsome power.</p></span>		<table border="0" cellspacing="0" cellpadding="0">
+			<tr><td><strong>Link:</strong>&nbsp;&nbsp;</td><td><a href="http://xao-php.sourceforge.net">http://xao-php.sourceforge.net</a></td></tr>
+			<tr><td><strong>Filesource:</strong>&nbsp;&nbsp;</td><td><a href="..//__filesource/fsource_XAO__XAO_DbToXml.php.html">Source Code for this file</a></td></tr>
+			<tr><td><strong>License:</strong>&nbsp;&nbsp;</td><td>LGPL</td></tr>
+			<tr><td><strong>Copyright:</strong>&nbsp;&nbsp;</td><td>Terence Kearns 2003</td></tr>
+			<tr><td><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0 alpha</td></tr>
+			<tr><td><strong>Author:</strong>&nbsp;&nbsp;</td><td>Terence Kearns</td></tr>
+	</table>
+
+			</div>
+</div>
+
+	<a name="sec-classes"></a>
+	<div class="info-box">
+		<div class="info-box-title">Classes</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+			<span class="disabled">Classes</span>
+			|							<a href="#sec-includes">Includes</a>
+																		</div>
+		<div class="info-box-body">
+			<table cellpadding="2" cellspacing="0" class="class-table">
+				<tr>
+					<th class="class-table-header">Class</th>
+					<th class="class-table-header">Description</th>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top">
+						<a href="../XAO/DbToXml.html">DbToXml</a>
+					</td>
+					<td>
+											Convert a result table from an SQL query into basic XML.
+										</td>
+				</tr>
+							</table>
+		</div>
+	</div>
+
+	<a name="sec-includes"></a>
+	<div class="info-box">
+		<div class="info-box-title">Includes</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Page Details</a> |
+							<a href="#sec-classes">Classes</a>
+				|						<span class="disabled">Includes</span>
+														</div>
+		<div class="info-box-body">
+			<a name="_XAO_DomDoc_php"><!-- --></a>
+<div class="evenrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">include_once</span>
+			(<span class="include-name"><a href="../XAO/_classes_XAO_DomDoc_php.html">"XAO_DomDoc.php"</a></span>)
+			<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_DbToXml.php.html#a26">26</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Import the basic DomDoc class for inheritance.
+</strong></p>
+<span class="description"><p>This class is based on DomDoc and hence supports all of it's functionality,  including it's ability to be consumed by another DomDoc based object.</p></span>	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Import:</strong>&nbsp;&nbsp;</td><td>DomDoc</td>
+  </tr>
+</table>
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+<a name="_XAO_DbToXml_ResultFetcher_php"><!-- --></a>
+<div class="oddrow">
+
+	<div>
+		<span class="include-title">
+			<span class="include-type">include_once</span>
+			(<span class="include-name"><a href="../XAO/_classes_XAO_DbToXml_ResultFetcher_php.html">"XAO_DbToXml_ResultFetcher.php"</a></span>)
+			<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_DbToXml.php.html#a40">40</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Import the result fetcher helper object.
+</strong></p>
+<span class="description"><p>This class is dedicated to fetching the appropriate 2D array from query  result objects (of which there are quite a few). This is a just a little  icing on te cake to eliminate the extra steps needed for obtaining, checking  for errors, and formatting the actual data into an array of associative  arrays. It means that users of database abstraction layer classes need not  concern themselves with the format that DbToXml expects.</p></span>	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Import:</strong>&nbsp;&nbsp;</td><td>ResultFetcher</td>
+  </tr>
+</table>
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+		<br />
+</div>
+		</div>
+	</div><br />
+
+
+
+
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Fri,  3 Oct 2003 19:09:33 +1000 by <a href="http://www.phpdoc.org">phpDocumentor 1.2.2</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

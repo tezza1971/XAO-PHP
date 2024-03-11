@@ -1,0 +1,683 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Docs For Class Exceptions</title>
+	<link rel="stylesheet" type="text/css" href="../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left">
+        Documentation automatically generated from the source-code
+        using <a href="http://phpdocu.sourceforge.net/" title="Go to the phpDocumentor homepage.">phpDocumentor</a>.
+       <div>Official Homepage: <a href="http://xao-php.sourceforge.net">xao-php.sourceforge.net</a></div>
+    </td>
+    <td class="header-top-right">XAO<div class="header-top-right-subpackage"></div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+          <a href="http://xao-php.sourceforge.net">Official homepage</a> |
+          <a href="../index.html">API home</a> |
+  		  <a href="../classtrees_XAO.html" class="menu">class tree: XAO</a> |
+		  <a href="../elementindex_XAO.html" class="menu">index: XAO</a> |
+		  <a href="../elementindex.html" class="menu">all elements</a>
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">XAO</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../li_XAO.html">XAO</a><br />
+      	</div>
+      <br />
+                
+                                    <b>Classes:</b><br />
+                <div class="package">
+		    		<a href="../XAO/AppDoc.html">AppDoc</a>    	 <br />
+	    		<a href="../XAO/DbToXml.html">DbToXml</a>    	 <br />
+	    		<a href="../XAO/DomDoc.html">DomDoc</a>    	 <br />
+	    		<a href="../XAO/DomFactory.html">DomFactory</a>    	 <br />
+	    		<a href="../XAO/Exceptions.html">Exceptions</a>    	 <br />
+	    		<a href="../XAO/ResultFetcher.html">ResultFetcher</a>    	 <br />
+	    		<a href="../XAO/TextDebugger.html">TextDebugger</a>    	 <br />
+	    		<a href="../XAO/Transformer.html">Transformer</a>    	 <br />
+	    		<a href="../XAO/XaoRoot.html">XaoRoot</a>    	 <br />
+	  </div>
+                    <br />
+                        <b>Files:</b><br />
+                <div class="package">
+				<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_AppDoc_php.html">XAO_AppDoc.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DbToXml_php.html">XAO_DbToXml.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DbToXml_ResultFetcher_php.html">XAO_DbToXml_ResultFetcher.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DomDoc_php.html">XAO_DomDoc.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DomFactory_php.html">XAO_DomFactory.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_Exceptions_php.html">XAO_Exceptions.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_TextDebugger_php.html">XAO_TextDebugger.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_Transformer_php.html">XAO_Transformer.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_XaoRoot_php.html">XAO_XaoRoot.php</a></span><br />
+	  </div>
+                    </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: Exceptions</h1>
+Source Location: Program_Root/XAO_Exceptions.php<br /><br />
+
+<h2 class="class-name">Class Exceptions</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Class Overview</div>
+	<div class="nav-bar">
+					<span class="disabled">Class Overview</span> |
+									<a href="#sec-inherited">Inherited Properties and Methods</a>
+			|											<a href="#sec-var-summary">Propertys Summary</a> | <a href="#sec-vars">Properties Detail</a>
+						|											<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+						</div>
+	<div class="info-box-body">
+		<table width="100%" border="0">
+		<tr><td valign="top" width="60%" class="class-overview">
+
+		<p align="center" class="short-description"><strong>Utility for managing massages relating to exceptional conditions (errors)
+</strong></p>
+<span class="description"><p>This class is used to produce and manage error messages for exceptional  conditions as XML data in a DomDoc based object. It also stores debugging  data wich may optionally be displayed by an appropriate stylesheet. All data  is managed directly on the DOM tree (rather than maintaining a dedicated  stack) of the calling object to ensure it's availability without having to  notify a separate stack manager when the application needs the data.  As such, this class requires a stub (node) on the DOM tree represending the  &quot;errors&quot; element where it will mainatain error data.</p></span>
+		<p class="notes">
+			Located in <a class="field" href="_classes_XAO_Exceptions_php.html">Program_Root/XAO_Exceptions.php</a> [<span class="field">line <a href="..//__filesource/fsource_XAO__XAO_Exceptions.php.html#a46">46</a></span>]
+		</p>
+
+		
+		<pre><a href="../XAO/XaoRoot.html">XaoRoot</a>
+   |
+   --Exceptions</pre>
+
+		
+				<strong>Author(s):</strong>
+		<ul>
+		  			 		  			 		  			 		  			 		  			 			 <li>Terence Kearns</li>
+			 		  		</ul>
+		
+		
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+			<tr><td><strong>Link:</strong>&nbsp;&nbsp;</td><td><a href="http://xao-php.sourceforge.net">http://xao-php.sourceforge.net</a></td></tr>
+				<tr><td><strong>License:</strong>&nbsp;&nbsp;</td><td>LGPL</td></tr>
+				<tr><td><strong>Copyright:</strong>&nbsp;&nbsp;</td><td>Terence Kearns 2003</td></tr>
+				<tr><td><strong>Version:</strong>&nbsp;&nbsp;</td><td>0.0</td></tr>
+		</table>
+		</td>
+
+				<td valign="top" width="20%" class="class-overview">
+		<p align="center" class="short-description"><strong><a href="#sec_vars">Properties</a></strong></p>
+		<ul>
+		  		  <li><a href="../XAO/Exceptions.html#var$arrErrAttribs">$arrErrAttribs</a></li>
+		  		  <li><a href="../XAO/Exceptions.html#var$blnCreateStackTrace">$blnCreateStackTrace</a></li>
+		  		  <li><a href="../XAO/Exceptions.html#var$ndErrors">$ndErrors</a></li>
+		  		  <li><a href="../XAO/Exceptions.html#var$objDoc">$objDoc</a></li>
+		  		  <li><a href="../XAO/Exceptions.html#var$strElName">$strElName</a></li>
+		  		</ul>
+		</td>
+		
+				<td valign="top" width="20%" class="class-overview">
+		<p align="center" class="short-description"><strong><a href="#sec_methods">Methods</a></strong></p>
+		<ul>
+		  		  <li><a href="../XAO/Exceptions.html#methodExceptions">Exceptions</a></li>
+		  		  <li><a href="../XAO/Exceptions.html#methodndCreateError">ndCreateError</a></li>
+		  		  <li><a href="../XAO/Exceptions.html#methodSetMessage">SetMessage</a></li>
+		  		  <li><a href="../XAO/Exceptions.html#methodSetMsgAttribs">SetMsgAttribs</a></li>
+		  		  <li><a href="../XAO/Exceptions.html#method_CreateStackTrace">_CreateStackTrace</a></li>
+		  		</ul>
+		</td>
+		
+		</tr></table>
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+</div>
+
+
+	<a name="sec-inherited"></a>
+	<div class="info-box">
+		<div class="info-box-title">Inherited Properties and Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+						|			<span class="disabled">Inherited Properties and Methods</span>
+			|												<a href="#sec-var-summary">Propertys Summary</a> | <a href="#sec-vars">Properties Detail</a>
+								|															<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+									</div>
+		<div class="info-box-body">
+			<table cellpadding="2" cellspacing="0" class="class-table">
+				<tr>
+					<th class="class-table-header" width="30%">Inherited Properties</th>
+					<th class="class-table-header" width="70%">Inherited Methods</th>
+				</tr>
+				<tr>
+					<td width="30%">
+													<p>Inherited From <span class="classname"><a href="../XAO/XaoRoot.html">XaoRoot</a></span></p>
+							<blockquote>
+								<dl>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$arrCacheParams">XaoRoot::$arrCacheParams</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$fncErrCallbackFunc">XaoRoot::$fncErrCallbackFunc</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$idXaoNamespace">XaoRoot::$idXaoNamespace</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$strDebugData">XaoRoot::$strDebugData</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$strError">XaoRoot::$strError</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$strXaoNamespacePrefix">XaoRoot::$strXaoNamespacePrefix</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																	</dl>
+							</blockquote>
+											</td>
+					<td width="70%">
+													<p>Inherited From <span class="classname"><a href="../XAO/XaoRoot.html">XaoRoot</a></span></p>
+							<blockquote>
+								<dl>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#methodarrSetErrFnc">XaoRoot::arrSetErrFnc()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#methodblnTestSafeName">XaoRoot::blnTestSafeName()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#methodThrow">XaoRoot::Throw()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Generic/default error handler.</span>
+										</dd>
+																	</dl>
+							</blockquote>
+											</td>
+				</tr>
+			</table>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Property Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|						<span class="disabled">Property Summary</span> | <a href="#sec-vars">Properties Detail</a>
+							|
+									<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+									</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+			<table border="0" cellspacing="0" cellpadding="0" class="var-summary">
+							<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">array</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$arrErrAttribs" title="details" class="var-name-summary">$arrErrAttribs</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Hash list of metadata to provide supportive context for error messages</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">mixed</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$blnCreateStackTrace" title="details" class="var-name-summary">$blnCreateStackTrace</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description"></td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">mixed</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$ndErrors" title="details" class="var-name-summary">$ndErrors</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description"></td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">mixed</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$objDoc" title="details" class="var-name-summary">$objDoc</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description"></td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">string</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$strElName" title="details" class="var-name-summary">$strElName</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">XML Namespace Prefix</td></tr>
+				</div>
+								</table>
+			</div>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|															<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+								|
+						<span class="disabled">Method Summary</span> | <a href="#sec-methods">Methods Detail</a>
+		</div>
+		<div class="info-box-body">
+			<div class="method-summary">
+				<table border="0" cellspacing="0" cellpadding="0" class="method-summary">
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#Exceptions" title="details" class="method-name">Exceptions</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Exceptions constructor</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">node</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#ndCreateError" title="details" class="method-name">&amp;ndCreateError</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Execution method for created the actual error data</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#SetMessage" title="details" class="method-name">SetMessage</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Exceptional message setter method</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#SetMsgAttribs" title="details" class="method-name">SetMsgAttribs</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Exceptional message setter method</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">node</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#_CreateStackTrace" title="details" class="method-name">_CreateStackTrace</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Method for creating verbose stack trace data on DOM tree</td></tr>
+				</div>
+								</table>
+			</div>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Properties</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|										<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+			
+							|
+									<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+									</div>
+		<div class="info-box-body">
+			<a name="var$arrErrAttribs" id="$arrErrAttribs"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>&nbsp;&nbsp;
+			<span class="var-name">$arrErrAttribs</span>
+			 = <span class="var-default">array()</span>			<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Exceptions.php.html#a71">71</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Hash list of metadata to provide supportive context for error messages
+</strong></p>
+<span class="description"><p>This is intended to be used by methods that override $this-&gt;Throw().</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$blnCreateStackTrace" id="$blnCreateStackTrace"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>&nbsp;&nbsp;
+			<span class="var-name">$blnCreateStackTrace</span>
+			 = <span class="var-default"> true</span>			<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Exceptions.php.html#a51">51</a>]</span>
+		</span>
+	</div>
+
+		
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$ndErrors" id="$ndErrors"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>&nbsp;&nbsp;
+			<span class="var-name">$ndErrors</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Exceptions.php.html#a49">49</a>]</span>
+		</span>
+	</div>
+
+		
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$objDoc" id="$objDoc"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>&nbsp;&nbsp;
+			<span class="var-name">$objDoc</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Exceptions.php.html#a48">48</a>]</span>
+		</span>
+	</div>
+
+		
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$strElName" id="$strElName"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>&nbsp;&nbsp;
+			<span class="var-name">$strElName</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Exceptions.php.html#a61">61</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>XML Namespace Prefix
+</strong></p>
+<span class="description"><p>Element name to use for each exception.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+		</div>
+	</div>
+
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|															<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+														<a href="#sec-method-summary">Method Summary</a> | <span class="disabled">Methods Detail</span>
+					</div>
+		<div class="info-box-body">
+			<a name='method_detail'></a>
+<a name="methodExceptions" id="Exceptions"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">Constructor Exceptions</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Exceptions.php.html#a84">84</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void Exceptions(
+dom
+&$objDoc, node
+&$ndErrors, [mixed
+$strElName = "exception"], [mixed
+$idNamespace = ""]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Exceptions constructor
+</strong></p>
+<span class="description"><p>Simply obtain references to the calling document and keep them locally  (global to the class).</p></span>
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">dom</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">&$objDoc:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> ref     document where the error data is to be grafted.</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">node</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">&$ndErrors:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> ref    the stub onto which the error grafted</span>			</td></tr>
+				</table>
+
+	<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodndCreateError" id="ndCreateError"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">ndCreateError</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Exceptions.php.html#a147">147</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>node &amp;ndCreateError(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Execution method for created the actual error data
+</strong></p>
+
+	<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>A reference to the new DOM node created.</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodSetMessage" id="SetMessage"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">SetMessage</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Exceptions.php.html#a102">102</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void SetMessage(
+string
+$strMsg&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Exceptional message setter method
+</strong></p>
+
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$strMsg:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> current message for current exceptional condition</span>			</td></tr>
+				</table>
+
+	<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodSetMsgAttribs" id="SetMsgAttribs"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">SetMsgAttribs</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Exceptions.php.html#a124">124</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void SetMsgAttribs(
+array
+$arrAttribs&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Exceptional message setter method
+</strong></p>
+<span class="description"><p>This method resets the current array of error message attributes to the  associative array passed in the first argument. The array is NOT  appended.</p></span>
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$arrAttribs:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> copy associative array of error message attributes</span>			</td></tr>
+				</table>
+
+	<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="method_CreateStackTrace" id="_CreateStackTrace"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">_CreateStackTrace</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Exceptions.php.html#a182">182</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>node _CreateStackTrace(
+mixed
+&$ndErr&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Method for creating verbose stack trace data on DOM tree
+</strong></p>
+
+	<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>A reference to the error DOM node.</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+		</div>
+	</div>
+
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Fri,  3 Oct 2003 19:09:45 +1000 by <a href="http://www.phpdoc.org">phpDocumentor 1.2.2</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

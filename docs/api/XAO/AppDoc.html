@@ -1,0 +1,1176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Docs For Class AppDoc</title>
+	<link rel="stylesheet" type="text/css" href="../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left">
+        Documentation automatically generated from the source-code
+        using <a href="http://phpdocu.sourceforge.net/" title="Go to the phpDocumentor homepage.">phpDocumentor</a>.
+       <div>Official Homepage: <a href="http://xao-php.sourceforge.net">xao-php.sourceforge.net</a></div>
+    </td>
+    <td class="header-top-right">XAO<div class="header-top-right-subpackage"></div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+          <a href="http://xao-php.sourceforge.net">Official homepage</a> |
+          <a href="../index.html">API home</a> |
+  		  <a href="../classtrees_XAO.html" class="menu">class tree: XAO</a> |
+		  <a href="../elementindex_XAO.html" class="menu">index: XAO</a> |
+		  <a href="../elementindex.html" class="menu">all elements</a>
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">XAO</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../li_XAO.html">XAO</a><br />
+      	</div>
+      <br />
+                
+                                    <b>Classes:</b><br />
+                <div class="package">
+		    		<a href="../XAO/AppDoc.html">AppDoc</a>    	 <br />
+	    		<a href="../XAO/DbToXml.html">DbToXml</a>    	 <br />
+	    		<a href="../XAO/DomDoc.html">DomDoc</a>    	 <br />
+	    		<a href="../XAO/DomFactory.html">DomFactory</a>    	 <br />
+	    		<a href="../XAO/Exceptions.html">Exceptions</a>    	 <br />
+	    		<a href="../XAO/ResultFetcher.html">ResultFetcher</a>    	 <br />
+	    		<a href="../XAO/TextDebugger.html">TextDebugger</a>    	 <br />
+	    		<a href="../XAO/Transformer.html">Transformer</a>    	 <br />
+	    		<a href="../XAO/XaoRoot.html">XaoRoot</a>    	 <br />
+	  </div>
+                    <br />
+                        <b>Files:</b><br />
+                <div class="package">
+				<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_AppDoc_php.html">XAO_AppDoc.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DbToXml_php.html">XAO_DbToXml.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DbToXml_ResultFetcher_php.html">XAO_DbToXml_ResultFetcher.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DomDoc_php.html">XAO_DomDoc.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DomFactory_php.html">XAO_DomFactory.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_Exceptions_php.html">XAO_Exceptions.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_TextDebugger_php.html">XAO_TextDebugger.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_Transformer_php.html">XAO_Transformer.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_XaoRoot_php.html">XAO_XaoRoot.php</a></span><br />
+	  </div>
+                    </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: AppDoc</h1>
+Source Location: Program_Root/XAO_AppDoc.php<br /><br />
+
+<h2 class="class-name">Class AppDoc</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Class Overview</div>
+	<div class="nav-bar">
+					<span class="disabled">Class Overview</span> |
+									<a href="#sec-inherited">Inherited Properties and Methods</a>
+			|											<a href="#sec-var-summary">Propertys Summary</a> | <a href="#sec-vars">Properties Detail</a>
+						|											<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+						</div>
+	<div class="info-box-body">
+		<table width="100%" border="0">
+		<tr><td valign="top" width="60%" class="class-overview">
+
+		<p align="center" class="short-description"><strong>XML Application Object
+</strong></p>
+<span class="description"><p>AppDoc is the &quot;Application Object&quot; part of the XAO acronym. It represents the  &quot;Application Document&quot; in the context of XML being a document. So the contents  delivered to the user by the &quot;Application&quot; is contentained in the &quot;Document&quot;  held as a DOM XML document by AppDoc::objDoc. the objDoc property is inherited  from the DomDoc class. The AppDoc class provides extra functionality on  DomDoc that is specifically needed for typical &quot;framework mode&quot; usage of XAO.  Usage of this class assumes that the user will be employing XAO in framework  mode. In short, this is the framework class for XAO. It is advisable to  consult the tutorials shipped with XAO to obtain an understanding of how this  class is intended to be used.</p></span>
+		<p class="notes">
+			Located in <a class="field" href="_classes_XAO_AppDoc_php.html">Program_Root/XAO_AppDoc.php</a> [<span class="field">line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a58">58</a></span>]
+		</p>
+
+		
+		<pre><a href="../XAO/XaoRoot.html">XaoRoot</a>
+   |
+   --<a href="../XAO/DomDoc.html">DomDoc</a>
+      |
+      --AppDoc</pre>
+
+		
+		
+		
+		</td>
+
+				<td valign="top" width="20%" class="class-overview">
+		<p align="center" class="short-description"><strong><a href="#sec_vars">Properties</a></strong></p>
+		<ul>
+		  		  <li><a href="../XAO/AppDoc.html#var$arrXslParams">$arrXslParams</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#var$arrXsltCacheParams">$arrXsltCacheParams</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#var$blnClientSideTransform">$blnClientSideTransform</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#var$blnDebug">$blnDebug</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#var$ndStylePi">$ndStylePi</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#var$objXsl">$objXsl</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#var$strAltPayload">$strAltPayload</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#var$strForceContentType">$strForceContentType</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#var$strXsltProcessor">$strXsltProcessor</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#var$uriErrorStyle">$uriErrorStyle</a></li>
+		  		</ul>
+		</td>
+		
+				<td valign="top" width="20%" class="class-overview">
+		<p align="center" class="short-description"><strong><a href="#sec_methods">Methods</a></strong></p>
+		<ul>
+		  		  <li><a href="../XAO/AppDoc.html#methodAppDoc">AppDoc</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#methodndSetStylePI">ndSetStylePI</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#methodSend">Send</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#methodSetInternalErrorStyle">SetInternalErrorStyle</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#methodstrGetPayload">strGetPayload</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#methodThrow">Throw</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#methodTransform">Transform</a></li>
+		  		  <li><a href="../XAO/AppDoc.html#methoduriGetInternalErrorStyle">uriGetInternalErrorStyle</a></li>
+		  		</ul>
+		</td>
+		
+		</tr></table>
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+</div>
+
+
+	<a name="sec-inherited"></a>
+	<div class="info-box">
+		<div class="info-box-title">Inherited Properties and Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+						|			<span class="disabled">Inherited Properties and Methods</span>
+			|												<a href="#sec-var-summary">Propertys Summary</a> | <a href="#sec-vars">Properties Detail</a>
+								|															<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+									</div>
+		<div class="info-box-body">
+			<table cellpadding="2" cellspacing="0" class="class-table">
+				<tr>
+					<th class="class-table-header" width="30%">Inherited Properties</th>
+					<th class="class-table-header" width="70%">Inherited Methods</th>
+				</tr>
+				<tr>
+					<td width="30%">
+													<p>Inherited From <span class="classname"><a href="../XAO/DomDoc.html">DomDoc</a></span></p>
+							<blockquote>
+								<dl>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#var$ndErr">DomDoc::$ndErr</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#var$ndRoot">DomDoc::$ndRoot</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#var$objDoc">DomDoc::$objDoc</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#var$objErr">DomDoc::$objErr</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																	</dl>
+							</blockquote>
+													<p>Inherited From <span class="classname"><a href="../XAO/XaoRoot.html">XaoRoot</a></span></p>
+							<blockquote>
+								<dl>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$arrCacheParams">XaoRoot::$arrCacheParams</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$fncErrCallbackFunc">XaoRoot::$fncErrCallbackFunc</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$idXaoNamespace">XaoRoot::$idXaoNamespace</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$strDebugData">XaoRoot::$strDebugData</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$strError">XaoRoot::$strError</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$strXaoNamespacePrefix">XaoRoot::$strXaoNamespacePrefix</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																	</dl>
+							</blockquote>
+											</td>
+					<td width="70%">
+													<p>Inherited From <span class="classname"><a href="../XAO/DomDoc.html">DomDoc</a></span></p>
+							<blockquote>
+								<dl>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodDomDoc">DomDoc::DomDoc()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Constructor method</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodArr2Atts">DomDoc::Arr2Atts()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Turn an associative array into attributes</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodarrNdXPath">DomDoc::arrNdXPath()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Return a list of nodes resulting from an XPath Query</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodblnTestElementNode">DomDoc::blnTestElementNode()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Test if the supplied node is on object of type &quot;domelement&quot;</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodblnTestXmlName">DomDoc::blnTestXmlName()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Do a reliable test for a valid element name</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodCommitToFile">DomDoc::CommitToFile()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">mass storage serialisation</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodConsumeDocData">DomDoc::ConsumeDocData()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Import well-balenced XML data to append below $this-&gt;ndRoot</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodndAppendToNode">DomDoc::ndAppendToNode()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">quickly add a new element under an exising element node.</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodndAppendToRoot">DomDoc::ndAppendToRoot()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">quickly add a new element under the root element.</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodndConsumeDoc">DomDoc::ndConsumeDoc()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Import a foreign PHP DOM XML document and append it below $this-&gt;ndRoot</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodndConsumeFile">DomDoc::ndConsumeFile()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Import an XML document from a file and append it below $this-&gt;ndRoot</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodndConsumeFragData">DomDoc::ndConsumeFragData()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Import well-balenced XML data to append below $this-&gt;ndRoot</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodndGetOneEl">DomDoc::ndGetOneEl()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">fetch a single element node by name</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodndImportChildFrag">DomDoc::ndImportChildFrag()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Import a fragment from a foreign PHP DOM XML document</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodProcessCustomTags">DomDoc::ProcessCustomTags()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Process all nodes (domelements) due for processing.</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodSetCustomTagName">DomDoc::SetCustomTagName()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Have all elements of a specified name processed by a call-back function.</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodSetCustomTagQuery">DomDoc::SetCustomTagQuery()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Use an XPath to nominate nodes for processing by a call-back function.</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodThrow">DomDoc::Throw()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Base error logger</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodxmlGetDoc">DomDoc::xmlGetDoc()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Serialise and return the entire document object as stand-alone XML.</span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/DomDoc.html#methodxmlGetFrag">DomDoc::xmlGetFrag()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Serialise and return the entire document as an XML fragment.</span>
+										</dd>
+																	</dl>
+							</blockquote>
+													<p>Inherited From <span class="classname"><a href="../XAO/XaoRoot.html">XaoRoot</a></span></p>
+							<blockquote>
+								<dl>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#methodarrSetErrFnc">XaoRoot::arrSetErrFnc()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#methodblnTestSafeName">XaoRoot::blnTestSafeName()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#methodThrow">XaoRoot::Throw()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Generic/default error handler.</span>
+										</dd>
+																	</dl>
+							</blockquote>
+											</td>
+				</tr>
+			</table>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Property Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|						<span class="disabled">Property Summary</span> | <a href="#sec-vars">Properties Detail</a>
+							|
+									<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+									</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+			<table border="0" cellspacing="0" cellpadding="0" class="var-summary">
+							<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">array</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$arrXslParams" title="details" class="var-name-summary">$arrXslParams</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Stylesheet parameters</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">array</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$arrXsltCacheParams" title="details" class="var-name-summary">$arrXsltCacheParams</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Cache parameters for the XSLT tranformation result</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">boolean</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$blnClientSideTransform" title="details" class="var-name-summary">$blnClientSideTransform</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Force client-side XSL Transformation attempt.</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">boolean</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$blnDebug" title="details" class="var-name-summary">$blnDebug</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Debug option</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">node</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$ndStylePi" title="details" class="var-name-summary">$ndStylePi</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Stylesheet processing instruction node</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">object</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$objXsl" title="details" class="var-name-summary">$objXsl</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Stylesheet native PHP DOM XML object</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">string</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$strAltPayload" title="details" class="var-name-summary">$strAltPayload</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Storage slot for alternative payload</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">boolean</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$strForceContentType" title="details" class="var-name-summary">$strForceContentType</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Debug option</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">string</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$strXsltProcessor" title="details" class="var-name-summary">$strXsltProcessor</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Which XSLT processor to use</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">uri</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$uriErrorStyle" title="details" class="var-name-summary">$uriErrorStyle</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Dedicated Error output display template</td></tr>
+				</div>
+								</table>
+			</div>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|															<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+								|
+						<span class="disabled">Method Summary</span> | <a href="#sec-methods">Methods Detail</a>
+		</div>
+		<div class="info-box-body">
+			<div class="method-summary">
+				<table border="0" cellspacing="0" cellpadding="0" class="method-summary">
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#AppDoc" title="details" class="method-name">AppDoc</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">AppDoc constructor</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">bool</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#ndSetStylePI" title="details" class="method-name">&amp;ndSetStylePI</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Insert stylesheet processing instruction</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#Send" title="details" class="method-name">Send</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Send the serialised XML content of this object to the client</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#SetInternalErrorStyle" title="details" class="method-name">SetInternalErrorStyle</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Set the name of the internal error stylsheet using in debug mode</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">string</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#strGetPayload" title="details" class="method-name">strGetPayload</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Return data that would be destined for the client (in current state)</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#Throw" title="details" class="method-name">Throw</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Wrapper for parent::throw() function adding ability to abort script</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#Transform" title="details" class="method-name">Transform</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Prepares $this-&gt;strAltPayload with XSLT transformation result data</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">uri</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#uriGetInternalErrorStyle" title="details" class="method-name">uriGetInternalErrorStyle</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Get the absolute system location of the internal error stylsheet.</td></tr>
+				</div>
+								</table>
+			</div>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Properties</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|										<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+			
+							|
+									<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+									</div>
+		<div class="info-box-body">
+			<a name="var$arrXslParams" id="$arrXslParams"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>&nbsp;&nbsp;
+			<span class="var-name">$arrXslParams</span>
+			 = <span class="var-default">array()</span>			<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a85">85</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Stylesheet parameters
+</strong></p>
+<span class="description"><p>See documentation in the Transformer class on the variable with the  same name.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$arrXsltCacheParams" id="$arrXsltCacheParams"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>&nbsp;&nbsp;
+			<span class="var-name">$arrXsltCacheParams</span>
+			 = <span class="var-default">array()</span>			<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a74">74</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Cache parameters for the XSLT tranformation result
+</strong></p>
+<span class="description"><p>In the standard XAO framework, caching can be done at two stages. The  first is at the content generation stage which uses $arrDocCacheParams,  the second is at the transformation results stage which uses this array.  The array has the same requirements and is used in exactly the same way  as the $arrDocCacheParams array. It is passed to the Transformer class  (by $this-&gt;Transform method) which then uses CacheMan to implement it.  Also see doc comments at XaoRoot::arrCacheParams for more info.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$blnClientSideTransform" id="$blnClientSideTransform"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">boolean</span>&nbsp;&nbsp;
+			<span class="var-name">$blnClientSideTransform</span>
+			 = <span class="var-default"> false</span>			<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a131">131</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Force client-side XSL Transformation attempt.
+</strong></p>
+<span class="description"><p>This causes the TransformSend() method to bypass server-side  transformation and send the source document directly to the client. If  the stylsheet PI is set, then the client should find it and perform it's  own transformation.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$blnDebug" id="$blnDebug"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">boolean</span>&nbsp;&nbsp;
+			<span class="var-name">$blnDebug</span>
+			 = <span class="var-default"> false</span>			<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a171">171</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Debug option
+</strong></p>
+<span class="description"><p>Designed to be used during development, this object will cause error  output to be more verbose unser certain conditions. It may also be used  by the developer to output diagnostic information at run-time. It is kept  off by default in case it proposes any security issues.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$ndStylePi" id="$ndStylePi"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">node</span>&nbsp;&nbsp;
+			<span class="var-name">$ndStylePi</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a210">210</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Stylesheet processing instruction node
+</strong></p>
+<span class="description"><p>This is the node object representing the stylesheet PI. It is set using  the ndSetStylePI() method which only matains one PI node for the  stylesheet. If a user overrides the $_uriStyleSheet member variable with  a populated version, this ndSetStylePI() is called with it in the  contructor.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$objXsl" id="$objXsl"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">object</span>&nbsp;&nbsp;
+			<span class="var-name">$objXsl</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a237">237</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Stylesheet native PHP DOM XML object
+</strong></p>
+<span class="description"><p>This variable is populated if the specified stylsheet is successfully  opened as an XML document.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$strAltPayload" id="$strAltPayload"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>&nbsp;&nbsp;
+			<span class="var-name">$strAltPayload</span>
+			 = <span class="var-default"> false</span>			<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a106">106</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Storage slot for alternative payload
+</strong></p>
+<span class="description"><p>If this variable is populated, then this is all that is sent to the UA  via the AppDoc::Send method. If it is left empty, then the AppDoc::Send  method will send the serialised content of DomDoc::objDoc  This method is provided as a method of short-circuiting the default  behavior of AppDocc::Send - thereby allowing AppDoc::Send to be the  single/only way for which the payload is transmitted. This is very  important because it allows XAO framework to sentralise control script  completion and payload transmission.  An example of where an alternate payload is needed is an XSLT  transformation result. Other instances, where the well-formedness of a  payload cannot be garenteed, will also require the use of this string  variable.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$strForceContentType" id="$strForceContentType"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">boolean</span>&nbsp;&nbsp;
+			<span class="var-name">$strForceContentType</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a184">184</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Debug option
+</strong></p>
+<span class="description"><p>Designed to be used during development, this object will cause error  output to be more verbose unser certain conditions. It may also be used  by the developer to output diagnostic information at run-time. It is kept  off by default in case it proposes any security issues.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$strXsltProcessor" id="$strXsltProcessor"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>&nbsp;&nbsp;
+			<span class="var-name">$strXsltProcessor</span>
+			 = <span class="var-default"> &quot;SABLOTRON&quot;</span>			<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a226">226</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Which XSLT processor to use
+</strong></p>
+<span class="description"><p>This option allows the user to choose which implemented XSLT processor  to employ. At this stage, possible choices are: <ul><li>SABLOTRON which uses the xslt_ functions built into PHP.</li><li>DOMXML which uses the experimental transformation capabilities of the
+   native PHP domxml extension itself.</li></ul> Future implementations could use external procesors which may be Java,  Com, or command-line executables.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$uriErrorStyle" id="$uriErrorStyle"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">uri</span>&nbsp;&nbsp;
+			<span class="var-name">$uriErrorStyle</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a146">146</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Dedicated Error output display template
+</strong></p>
+<span class="description"><p>Under certain conditions, the availability of a dedicated error template  will cause an exceptional condition to output the error DOM object (with  all it's errors so far) using the same rules as $this-&gt;Send(). An example  is the Transform object which uses it when $this-&gt;blnDebug is turned off.  If no dedicated error stylsheet is supplied, then it behaves differently.  It is empty by default in case it proposes any security issues.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+		</div>
+	</div>
+
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|															<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+														<a href="#sec-method-summary">Method Summary</a> | <span class="disabled">Methods Detail</span>
+					</div>
+		<div class="info-box-body">
+			<a name='method_detail'></a>
+<a name="methodAppDoc" id="AppDoc"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">Constructor AppDoc</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a260">260</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void AppDoc(
+mixed
+&$mxdStarter, [integer
+$intUse = XAO_DOC_NEW]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>AppDoc constructor
+</strong></p>
+<span class="description"><p>This method runs the parent constructor and sets up the xao namespace.  There is no way to detect if a namespace declaration exists  (to prevent duplicates). At the moment, one is inserted regardless!!!  This is absolutely neccesary due to their usage by exceptions.  WARNING::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  THIS  MEANS THAT YOU CANNOT IMPORT EXISTING XML FILES WHICH HAVE A  THE NAMESPACE xmlns:xao ALREADY DECLARED IN THE ROOT ELEMENT.  The current DOMXML extension allows multiple attributes of the same name  to be inserted (not good). It's namespace functions don't allow a  [non-default] namespace declaration to be inserted without changing the  prefix of the tag in context - so we're forced to use the dubious  &quot;set_attribute()&quot; method instead.</p></span>
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">mixed</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">&$mxdStarter:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> starting data</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">integer</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$intUse:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> how to use the staring data</span>			</td></tr>
+				</table>
+
+	<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodndSetStylePI" id="ndSetStylePI"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">ndSetStylePI</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a291">291</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>bool &amp;ndSetStylePI(
+uri
+$uriStyleSheet, [boolean
+$blnCheck = true]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Insert stylesheet processing instruction
+</strong></p>
+<span class="description"><p>This processing instruction is used by the transform() method if a  stylesheet URI is not specifically provided to it. This method will  automatically be called in the constructor if the user overrides the  $this-&gt;_uriStyleSheet member attribute. It may, however, be called at any  time by the user. Only one xsl stylsheet PI is maintained in the  document. If it was already set at the time of the call to this method,  then the new stylsheet URI will _replace_ the one in the existing PI.</p></span>
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">uri</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$uriStyleSheet:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> path to XSL stylesheet</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">boolean</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$blnCheck:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Whether or not to check(parse) the file.</span>			</td></tr>
+				</table>
+
+	<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>success</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodSend" id="Send"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">Send</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a483">483</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void Send(
+[string
+$strAlt = ""]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Send the serialised XML content of this object to the client
+</strong></p>
+<span class="description"><p>This function will emit the contents of this XML document as a string to  the user-agent. It checks to see if the option was set to bind the error  data [built up from usage of $this-&gt;Throw()] to the content. It also  signals the user agent to expect text in XML format.  When XAO is used as a framework, then some sort of send</p></span>
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$strAlt:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> alternate payload which will be sent</span>			</td></tr>
+				</table>
+
+	<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodSetInternalErrorStyle" id="SetInternalErrorStyle"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">SetInternalErrorStyle</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a369">369</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void SetInternalErrorStyle(
+uri
+$uri&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Set the name of the internal error stylsheet using in debug mode
+</strong></p>
+<span class="description"><p>This shouldn't need to be changed. However, if it is not appropriate  for your circumstances, you may change it. Bear in mind that the uri  must be specified as a relative path to the physical location of the  xao DomDoc.php file.</p></span>
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">uri</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$uri:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Relative path to internal error stylesheet</span>			</td></tr>
+				</table>
+
+	<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodstrGetPayload" id="strGetPayload"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">strGetPayload</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a540">540</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>string strGetPayload(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Return data that would be destined for the client (in current state)
+</strong></p>
+<span class="description"><p>This function is specific to AppDoc and not DomDoc because of the  strAltPayload member attribute. This function can be used by the  RpcController class if the user bases their request class on AppDoc. For  instnace, they may want to take advantage of AppDoc's transform  capabilities to convernt proprietary content into another format such  as RSS.</p></span>
+	<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodThrow" id="Throw"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">Throw</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a557">557</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void Throw(
+string
+$strErrMsg, [array
+$arrAttribs = null], [mixed
+$blnDie = false]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Wrapper for parent::throw() function adding ability to abort script
+</strong></p>
+<span class="description"><p>This function basically calls the parent function of the same name but  also allows the caller to optionally abort the script if the last  argument is set to true.</p></span>
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$strErrMsg:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Main error message</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$arrAttribs:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> A hash of name/vals which will be attributes in the            exception tag</span>			</td></tr>
+				</table>
+
+	<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../XAO/DomDoc.html#methodThrow">DomDoc::Throw()</a></dt>
+						<dd>Base error logger</dd>
+					</dl>
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodTransform" id="Transform"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">Transform</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a387">387</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void Transform(
+[mixed
+$arrCacheParams = null]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Prepares $this-&gt;strAltPayload with XSLT transformation result data
+</strong></p>
+<span class="description"><p>This function is usually called just prior to $this-&gt;Send()  It is used when XSLT tranformations are required. It short-circuits the  behaviour of $this-&gt;Send by populating $this-&gt;strAltPayload the results  of the transformation. Note that this method requires a cirtain amount of  preparation work by the user - ie. a stylsheet must be set using  $this-&gt;ndSetStylePi()</p></span>
+	<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methoduriGetInternalErrorStyle" id="uriGetInternalErrorStyle"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">uriGetInternalErrorStyle</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_AppDoc.php.html#a352">352</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>uri uriGetInternalErrorStyle(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Get the absolute system location of the internal error stylsheet.
+</strong></p>
+<span class="description"><p>This method is needed to enforce a location that is relative to  XAO_AppDoc.php and not the last file in the call stack. See notes on  $this-&gt;SetInternalErrorStyle();</p></span>
+	<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>Absolute path to internal error stylsheet.</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+		</div>
+	</div>
+
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Fri,  3 Oct 2003 19:09:32 +1000 by <a href="http://www.phpdoc.org">phpDocumentor 1.2.2</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

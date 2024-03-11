@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+    <a href="../toc.php#basics">basics</a> &#187;
+        <a href="../basics/introduction.php">INTRODUCTION</a> &gt;
+        <a href="../basics/debugging.php">DEBUGGING</a> &gt;
+        <a href="../basics/sql2xml.php">SQL2XML</a>
+    <br />
+    <a href="../toc.php#intermediate">intermediate</a> &#187;
+        <a href="../intermediate/inheritance.php">INHERITANCE</a> &gt;
+        <a href="../intermediate/xslParams.php">XSL PARAMS</a> &gt;
+        <a href="../intermediate/customErrors.php">CUSTOM ERRORS</a>
+    <br />
+    <a href="../toc.php#advanced">advanced</a> &#187;
+        <a href="../advanced/sql2xml.php">ADV SQL2XML</a> &gt;
+        <a href="../advanced/xmlDb.php">XMLDB</a> &gt;
+        <a href="../advanced/soap.php">SOAP</a>
+</menu>

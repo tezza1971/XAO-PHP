@@ -1,0 +1,757 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Docs For Class Transformer</title>
+	<link rel="stylesheet" type="text/css" href="../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left">
+        Documentation automatically generated from the source-code
+        using <a href="http://phpdocu.sourceforge.net/" title="Go to the phpDocumentor homepage.">phpDocumentor</a>.
+       <div>Official Homepage: <a href="http://xao-php.sourceforge.net">xao-php.sourceforge.net</a></div>
+    </td>
+    <td class="header-top-right">XAO<div class="header-top-right-subpackage"></div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+          <a href="http://xao-php.sourceforge.net">Official homepage</a> |
+          <a href="../index.html">API home</a> |
+  		  <a href="../classtrees_XAO.html" class="menu">class tree: XAO</a> |
+		  <a href="../elementindex_XAO.html" class="menu">index: XAO</a> |
+		  <a href="../elementindex.html" class="menu">all elements</a>
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">XAO</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../li_XAO.html">XAO</a><br />
+      	</div>
+      <br />
+                
+                                    <b>Classes:</b><br />
+                <div class="package">
+		    		<a href="../XAO/AppDoc.html">AppDoc</a>    	 <br />
+	    		<a href="../XAO/DbToXml.html">DbToXml</a>    	 <br />
+	    		<a href="../XAO/DomDoc.html">DomDoc</a>    	 <br />
+	    		<a href="../XAO/DomFactory.html">DomFactory</a>    	 <br />
+	    		<a href="../XAO/Exceptions.html">Exceptions</a>    	 <br />
+	    		<a href="../XAO/ResultFetcher.html">ResultFetcher</a>    	 <br />
+	    		<a href="../XAO/TextDebugger.html">TextDebugger</a>    	 <br />
+	    		<a href="../XAO/Transformer.html">Transformer</a>    	 <br />
+	    		<a href="../XAO/XaoRoot.html">XaoRoot</a>    	 <br />
+	  </div>
+                    <br />
+                        <b>Files:</b><br />
+                <div class="package">
+				<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_AppDoc_php.html">XAO_AppDoc.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DbToXml_php.html">XAO_DbToXml.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DbToXml_ResultFetcher_php.html">XAO_DbToXml_ResultFetcher.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DomDoc_php.html">XAO_DomDoc.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_DomFactory_php.html">XAO_DomFactory.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_Exceptions_php.html">XAO_Exceptions.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_TextDebugger_php.html">XAO_TextDebugger.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_Transformer_php.html">XAO_Transformer.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../XAO/_classes_XAO_XaoRoot_php.html">XAO_XaoRoot.php</a></span><br />
+	  </div>
+                    </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: Transformer</h1>
+Source Location: Program_Root/XAO_Transformer.php<br /><br />
+
+<h2 class="class-name">Class Transformer</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Class Overview</div>
+	<div class="nav-bar">
+					<span class="disabled">Class Overview</span> |
+									<a href="#sec-inherited">Inherited Properties and Methods</a>
+			|											<a href="#sec-var-summary">Propertys Summary</a> | <a href="#sec-vars">Properties Detail</a>
+						|											<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+						</div>
+	<div class="info-box-body">
+		<table width="100%" border="0">
+		<tr><td valign="top" width="60%" class="class-overview">
+
+		<p align="center" class="short-description"><strong>Utility performing XSLT transformations
+</strong></p>
+<span class="description"><p>This class encapsulates comprehensive XSLT functionality. It makes available  multiple (pluggable) transformation engines through a unified, simplified API.</p></span>
+		<p class="notes">
+			Located in <a class="field" href="_classes_XAO_Transformer_php.html">Program_Root/XAO_Transformer.php</a> [<span class="field">line <a href="..//__filesource/fsource_XAO__XAO_Transformer.php.html#a49">49</a></span>]
+		</p>
+
+		
+		<pre><a href="../XAO/XaoRoot.html">XaoRoot</a>
+   |
+   --Transformer</pre>
+
+		
+				<strong>Author(s):</strong>
+		<ul>
+		  			 		  			 		  			 		  			 		  			 			 <li>Terence Kearns</li>
+			 		  		</ul>
+		
+		
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+			<tr><td><strong>Link:</strong>&nbsp;&nbsp;</td><td><a href="http://xao-php.sourceforge.net">http://xao-php.sourceforge.net</a></td></tr>
+				<tr><td><strong>License:</strong>&nbsp;&nbsp;</td><td>LGPL</td></tr>
+				<tr><td><strong>Copyright:</strong>&nbsp;&nbsp;</td><td>Terence Kearns 2003</td></tr>
+				<tr><td><strong>Version:</strong>&nbsp;&nbsp;</td><td>0.0</td></tr>
+		</table>
+		</td>
+
+				<td valign="top" width="20%" class="class-overview">
+		<p align="center" class="short-description"><strong><a href="#sec_vars">Properties</a></strong></p>
+		<ul>
+		  		  <li><a href="../XAO/Transformer.html#var$arrXslParams">$arrXslParams</a></li>
+		  		  <li><a href="../XAO/Transformer.html#var$ndSrcRoot">$ndSrcRoot</a></li>
+		  		  <li><a href="../XAO/Transformer.html#var$ndStyleRoot">$ndStyleRoot</a></li>
+		  		  <li><a href="../XAO/Transformer.html#var$objSrc">$objSrc</a></li>
+		  		  <li><a href="../XAO/Transformer.html#var$objStyle">$objStyle</a></li>
+		  		  <li><a href="../XAO/Transformer.html#var$strXsltProcessor">$strXsltProcessor</a></li>
+		  		  <li><a href="../XAO/Transformer.html#var$strXsltResult">$strXsltResult</a></li>
+		  		  <li><a href="../XAO/Transformer.html#var$_uriStyleSheet">$_uriStyleSheet</a></li>
+		  		</ul>
+		</td>
+		
+				<td valign="top" width="20%" class="class-overview">
+		<p align="center" class="short-description"><strong><a href="#sec_methods">Methods</a></strong></p>
+		<ul>
+		  		  <li><a href="../XAO/Transformer.html#methodTransformer">Transformer</a></li>
+		  		  <li><a href="../XAO/Transformer.html#methodSetXslParam">SetXslParam</a></li>
+		  		  <li><a href="../XAO/Transformer.html#methodThrow">Throw</a></li>
+		  		  <li><a href="../XAO/Transformer.html#methodTransform">Transform</a></li>
+		  		  <li><a href="../XAO/Transformer.html#method_SablotronErrorTrap">_SablotronErrorTrap</a></li>
+		  		</ul>
+		</td>
+		
+		</tr></table>
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+</div>
+
+
+	<a name="sec-inherited"></a>
+	<div class="info-box">
+		<div class="info-box-title">Inherited Properties and Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+						|			<span class="disabled">Inherited Properties and Methods</span>
+			|												<a href="#sec-var-summary">Propertys Summary</a> | <a href="#sec-vars">Properties Detail</a>
+								|															<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+									</div>
+		<div class="info-box-body">
+			<table cellpadding="2" cellspacing="0" class="class-table">
+				<tr>
+					<th class="class-table-header" width="30%">Inherited Properties</th>
+					<th class="class-table-header" width="70%">Inherited Methods</th>
+				</tr>
+				<tr>
+					<td width="30%">
+													<p>Inherited From <span class="classname"><a href="../XAO/XaoRoot.html">XaoRoot</a></span></p>
+							<blockquote>
+								<dl>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$arrCacheParams">XaoRoot::$arrCacheParams</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$fncErrCallbackFunc">XaoRoot::$fncErrCallbackFunc</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$idXaoNamespace">XaoRoot::$idXaoNamespace</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$strDebugData">XaoRoot::$strDebugData</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$strError">XaoRoot::$strError</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#var$strXaoNamespacePrefix">XaoRoot::$strXaoNamespacePrefix</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																	</dl>
+							</blockquote>
+											</td>
+					<td width="70%">
+													<p>Inherited From <span class="classname"><a href="../XAO/XaoRoot.html">XaoRoot</a></span></p>
+							<blockquote>
+								<dl>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#methodarrSetErrFnc">XaoRoot::arrSetErrFnc()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#methodblnTestSafeName">XaoRoot::blnTestSafeName()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition"></span>
+										</dd>
+																			<dt>
+											<span class="method-definition"><a href="../XAO/XaoRoot.html#methodThrow">XaoRoot::Throw()</a></span>
+										</dt>
+										<dd>
+											<span class="method-definition">Generic/default error handler.</span>
+										</dd>
+																	</dl>
+							</blockquote>
+											</td>
+				</tr>
+			</table>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Property Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|						<span class="disabled">Property Summary</span> | <a href="#sec-vars">Properties Detail</a>
+							|
+									<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+									</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+			<table border="0" cellspacing="0" cellpadding="0" class="var-summary">
+							<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">array</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$arrXslParams" title="details" class="var-name-summary">$arrXslParams</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">List of XSL parameters to be passed to the XSLT processor</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">node</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$ndSrcRoot" title="details" class="var-name-summary">$ndSrcRoot</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Root element of source document object</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">node</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$ndStyleRoot" title="details" class="var-name-summary">$ndStyleRoot</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Root element of source document object</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">object</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$objSrc" title="details" class="var-name-summary">$objSrc</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">DOM XML object instance of the source document</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">object</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$objStyle" title="details" class="var-name-summary">$objStyle</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">DOM XML object instance of stylsheet used in transformation</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">string</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$strXsltProcessor" title="details" class="var-name-summary">$strXsltProcessor</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Which XSLT processor to use</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">string</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$strXsltResult" title="details" class="var-name-summary">$strXsltResult</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">XSLT processing result container</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">mixed</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$_uriStyleSheet" title="details" class="var-name-summary">$_uriStyleSheet</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description"></td></tr>
+				</div>
+								</table>
+			</div>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|															<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+								|
+						<span class="disabled">Method Summary</span> | <a href="#sec-methods">Methods Detail</a>
+		</div>
+		<div class="info-box-body">
+			<div class="method-summary">
+				<table border="0" cellspacing="0" cellpadding="0" class="method-summary">
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#Transformer" title="details" class="method-name">Transformer</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Transformer constructor</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#SetXslParam" title="details" class="method-name">SetXslParam</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition"></td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#Throw" title="details" class="method-name">Throw</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition"></td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">string</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#Transform" title="details" class="method-name">Transform</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Transform contents using stylsheet in $this-&gt;_uriStylSheet</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#_SablotronErrorTrap" title="details" class="method-name">_SablotronErrorTrap</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition"></td></tr>
+				</div>
+								</table>
+			</div>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Properties</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|										<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+			
+							|
+									<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+									</div>
+		<div class="info-box-body">
+			<a name="var$arrXslParams" id="$arrXslParams"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>&nbsp;&nbsp;
+			<span class="var-name">$arrXslParams</span>
+			 = <span class="var-default">array()</span>			<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Transformer.php.html#a110">110</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>List of XSL parameters to be passed to the XSLT processor
+</strong></p>
+<span class="description"><p>Usually these will be set by the application class which inherits DomDoc.  The transform methods of this class should use this associative array to  add these parameters to the processor.  WARNING: RELYING ON THIS METHOD OF SETTING XSL PARAMS WILL MAKE YOUR  STYLSHEET INCOMPATIBLE WITH CLIENT-SIDE TRANSFORMATION.  IMPORTANT NOTE: YOUR PARAMS WILL NOT BE AVAILABLE IN YOUR STYLSHEET IF  YOU DO NOT DECLARE THEM (WITH EMPTY VALUES). THE PROCESSOR WILL ONLY FEED  PARAM VALUES TO THE STYLESHEET BY OVERRIDING THE VALUES OF EXISTING ONES.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$ndSrcRoot" id="$ndSrcRoot"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">node</span>&nbsp;&nbsp;
+			<span class="var-name">$ndSrcRoot</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Transformer.php.html#a70">70</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Root element of source document object
+</strong></p>
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$ndStyleRoot" id="$ndStyleRoot"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">node</span>&nbsp;&nbsp;
+			<span class="var-name">$ndStyleRoot</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Transformer.php.html#a91">91</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Root element of source document object
+</strong></p>
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$objSrc" id="$objSrc"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">object</span>&nbsp;&nbsp;
+			<span class="var-name">$objSrc</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Transformer.php.html#a62">62</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>DOM XML object instance of the source document
+</strong></p>
+<span class="description"><p>This has to be specified in the constructor. The Transformer class will  not work without this object and a DOM XML instnace of the stylsheet.  The constructor may need to ensure this object eventuates by parsing  in external XML data - same applies for the stylesheet.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$objStyle" id="$objStyle"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">object</span>&nbsp;&nbsp;
+			<span class="var-name">$objStyle</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Transformer.php.html#a83">83</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>DOM XML object instance of stylsheet used in transformation
+</strong></p>
+<span class="description"><p>This has to be specified in the constructor. The Transformer class will  not work without this object and a DOM XML instnace of the source doc.  The constructor may need to ensure this object eventuates by parsing  in external XML data - same applies for the source doc.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$strXsltProcessor" id="$strXsltProcessor"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>&nbsp;&nbsp;
+			<span class="var-name">$strXsltProcessor</span>
+			 = <span class="var-default"> &quot;DOMXML&quot;</span>			<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Transformer.php.html#a126">126</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Which XSLT processor to use
+</strong></p>
+<span class="description"><p>This option allows the user to choose which implemented XSLT processor  to employ. At this stage, possible choices are: <ul><li>SABLOTRON which uses the xslt_ functions built into PHP.</li><li>DOMXML which uses the experimental transformation capabilities of the
+   native PHP domxml extension itself.</li></ul> Future implementations could use external procesors which may be Java,  Com, or command-line executables.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$strXsltResult" id="$strXsltResult"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>&nbsp;&nbsp;
+			<span class="var-name">$strXsltResult</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Transformer.php.html#a137">137</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>XSLT processing result container
+</strong></p>
+<span class="description"><p>Regardless of which XSLT processor is used, the result is always stored  in this variable AS A STRING.</p></span>	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$_uriStyleSheet" id="$_uriStyleSheet"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>&nbsp;&nbsp;
+			<span class="var-name">$_uriStyleSheet</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Transformer.php.html#a93">93</a>]</span>
+		</span>
+	</div>
+
+		
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+		</div>
+	</div>
+
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+										<a href="#sec-inherited">Inherited Properties and Methods</a>
+				|															<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+														<a href="#sec-method-summary">Method Summary</a> | <span class="disabled">Methods Detail</span>
+					</div>
+		<div class="info-box-body">
+			<a name='method_detail'></a>
+<a name="methodTransformer" id="Transformer"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">Constructor Transformer</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Transformer.php.html#a156">156</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void Transformer(
+mixed
+&$mxdSrc, mixed
+&$mxdStyle&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Transformer constructor
+</strong></p>
+<span class="description"><p>The main job here is to parse the source XML and the XSLT as DOM XML  objects. Note that this technique incurs unneccesary overhead for  tranform processors like sablotron. But this is neccesary to maintain  the simplicity of the API - it's a trade-off!  The stylesheet and the XML source can be supplied in one of three formats:  1) DOM XML object (preferrred)  2) file URI  3) well formed ascii data</p></span>
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">mixed</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">&$mxdSrc:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> starting XML source data</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">mixed</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">&$mxdStyle:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> starting stylsheet</span>			</td></tr>
+				</table>
+
+	<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodSetXslParam" id="SetXslParam"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">SetXslParam</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Transformer.php.html#a266">266</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void SetXslParam(
+mixed
+$strName, mixed
+$strValue&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	
+	<br />
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodThrow" id="Throw"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">Throw</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Transformer.php.html#a251">251</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void Throw(
+mixed
+$strErrMsg, [mixed
+$arrAttribs = null]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	
+	<br />
+	
+
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../XAO/XaoRoot.html#methodThrow">XaoRoot::Throw()</a></dt>
+						<dd>Generic/default error handler.</dd>
+					</dl>
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodTransform" id="Transform"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">Transform</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Transformer.php.html#a300">300</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>string Transform(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Transform contents using stylsheet in $this-&gt;_uriStylSheet
+</strong></p>
+<span class="description"><p>This function calls the Transformer class which takes a DomDoc in the  first argument to the constructor as a reference. The Transformer object  records any errors using the passed DomDoc's Throw() method (so the  errors are bound to that source document). This function makes some  decisions on how errors are released based on options set in $this  DomDoc instance. Since a transformation result isn't always well-formed  XML, the result is returned as a string. Here are the steps taken:   1) check for the existance of a stylsheet   2) route the request to the chosen XSLT processor member function   3) return the result.</p></span>
+	<br />
+	<strong>API Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Return:</strong>&nbsp;&nbsp;</td><td>The contents of the transformation result or false                    on failure</td>
+  </tr>
+  <tr>
+    <td class="indent"><strong>Access:</strong>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+<br />
+
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="method_SablotronErrorTrap" id="_SablotronErrorTrap"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">_SablotronErrorTrap</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_XAO__XAO_Transformer.php.html#a494">494</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void _SablotronErrorTrap(
+mixed
+$resSab, mixed
+$intSabErr, mixed
+$strSabLvl, mixed
+$arrSabErrData&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	
+	<br />
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+		</div>
+	</div>
+
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Fri,  3 Oct 2003 19:09:50 +1000 by <a href="http://www.phpdoc.org">phpDocumentor 1.2.2</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

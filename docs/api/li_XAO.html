@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>XML Application Objects - API</title>
+	<link rel="stylesheet" type="text/css" href="media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left">
+        Documentation automatically generated from the source-code
+        using <a href="http://phpdocu.sourceforge.net/" title="Go to the phpDocumentor homepage.">phpDocumentor</a>.
+       <div>Official Homepage: <a href="http://xao-php.sourceforge.net">xao-php.sourceforge.net</a></div>
+    </td>
+    <td class="header-top-right">XAO<div class="header-top-right-subpackage"></div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+          <a href="http://xao-php.sourceforge.net">Official homepage</a> |
+          <a href="../index.html">API home</a> |
+  		  <a href="classtrees_XAO.html" class="menu">class tree: XAO</a> |
+		  <a href="elementindex_XAO.html" class="menu">index: XAO</a> |
+		  <a href="elementindex.html" class="menu">all elements</a>
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">XAO</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="li_XAO.html">XAO</a><br />
+      	</div>
+      <br />
+                
+                                    <b>Classes:</b><br />
+                <div class="package">
+		    		<a href="XAO/AppDoc.html">AppDoc</a>    	 <br />
+	    		<a href="XAO/DbToXml.html">DbToXml</a>    	 <br />
+	    		<a href="XAO/DomDoc.html">DomDoc</a>    	 <br />
+	    		<a href="XAO/DomFactory.html">DomFactory</a>    	 <br />
+	    		<a href="XAO/Exceptions.html">Exceptions</a>    	 <br />
+	    		<a href="XAO/ResultFetcher.html">ResultFetcher</a>    	 <br />
+	    		<a href="XAO/TextDebugger.html">TextDebugger</a>    	 <br />
+	    		<a href="XAO/Transformer.html">Transformer</a>    	 <br />
+	    		<a href="XAO/XaoRoot.html">XaoRoot</a>    	 <br />
+	  </div>
+                    <br />
+                        <b>Files:</b><br />
+                <div class="package">
+				<span style="padding-left: 1em;"><a href="XAO/_classes_XAO_AppDoc_php.html">XAO_AppDoc.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="XAO/_classes_XAO_DbToXml_php.html">XAO_DbToXml.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="XAO/_classes_XAO_DbToXml_ResultFetcher_php.html">XAO_DbToXml_ResultFetcher.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="XAO/_classes_XAO_DomDoc_php.html">XAO_DomDoc.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="XAO/_classes_XAO_DomFactory_php.html">XAO_DomFactory.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="XAO/_classes_XAO_Exceptions_php.html">XAO_Exceptions.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="XAO/_classes_XAO_TextDebugger_php.html">XAO_TextDebugger.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="XAO/_classes_XAO_Transformer_php.html">XAO_Transformer.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="XAO/_classes_XAO_XaoRoot_php.html">XAO_XaoRoot.php</a></span><br />
+	  </div>
+                    </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>XML Application Objects - API</h1>
+<p>
+Welcome to the API references documentation generated from the source code. The
+XAO library is still a work in progress and this reference documentation
+reflects that. Still, it will help early adopters to get up-to-speed with
+rapid development of scalable standards-based web applications.</p>
+
+<p>This library/framework has be built by Terence Kearns and is made available
+to you at no cost via the <a href="http://www.gnu.org/licenses/lgpl.txt">Lesser 
+General Public License</a>. All contact should be
+directed through mailing lists and discussion forums hosted at the 
+<a href="http://xao-php.sourceforge.net/">official website</a>. This is where
+you will find comprehensive information regarding XAO. 
+</p>
+
+<p>This reference is 
+designed to accompany the tutorials which are supplied with the full XAO 
+library download. Tutorials cannot be hosted on SourceForge since they do not
+support the DOMXML extension for PHP.</p>
+
+<h2>UML class diagram (a visual map)</h2>
+
+<p>This should help you find your way around the classes in this library. Lines
+indicate various relationships between classes. The big triangular arrow heads
+indicate inheritance and point from the child class to the parent class. The
+diamonds indicate an aggregate association. Meaning the object with at the
+diamond end will aggregate instances of the other class. The names shown in
+angled quotes are stereotypes.</p>
+
+<p>
+Please note that there are classes shown on the diagram which are not part of the
+1.0 distribution. All 1.0 classes are listed to the left.
+</p>
+
+<p>The speculative stereotypes in the diagram indicate generally where your
+class will typically fit into the scheme of things. Typically, your classes
+will be based on content, and so you will inherit classes which are children or
+DomDoc, or you will inherit DomDoc directly. As you can see, it is safe to 
+ignore most of the classes here. You really only need know DomDoc and AppDoc to
+use XAO effectively. Consult the bundled tutorials for guidance.</p>
+
+<p>
+    <a 
+        href="http://xao-php.sourceforge.net/ctrl.php?op=uml" 
+        title="Click to see the latest version of this diagram online.">
+        <img 
+            src="media/xao-php_UML.gif" 
+            alt="XAO class diagram" 
+            border="0"
+        />
+    </a>
+</p>        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Fri,  3 Oct 2003 19:09:29 +1000 by <a href="http://www.phpdoc.org">phpDocumentor 1.2.2</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

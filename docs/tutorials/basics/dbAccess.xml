@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article>
+
+<h2>Processing results from an RDBMS (SQL database)</h2>
+<h3>XAO only processes results</h3>
+<h4>Results simulator</h4>
+<tutor:highlightFile src="dbAccess/dbSim.php" type="PHP-SOURCE" />
+<tutor:highlightFile src="dbAccess/test.php" type="PHP-SOURCE" />
+<p>
+    XAO does not have any classes which talk directly to your database. For that,
+    there is an every increasing range of pre-built <em>database abstraction layer</em>
+    classes such as <a href="http://pear.php.net/manual/en/package.database.php" 
+    target="_blank">PEAR DB</a>. We did not want to make any particular 
+    Relational Database Management 
+    System (RDBMS) a requirement for this tutorial
+    documentation so we're going to create a simple class which will generate
+    data to <em>simulate</em> a result set called <span class="code">dbSim</span>. Since this is just a device to
+    facilitate learning about XAO, we won't discuss the source for <span class="code">dbSim</span>.
+</p>
+<h3>an array of associative arrays</h3>
+<p>
+    The XAO class that is the centre of attention for this tutorial is 
+    <span class="code"><a href="../docs/api/XAO/DbToXml.html">DbToXml</a></span>. There will be more 
+    tutorials on this class showcasing some very advanced features, but for
+    now, we just want to demonstrate it's most basic functionality. To do this,
+    we will feed it a two-dimensional array of database results.
+</p>
+<p>This 2D array consists of an array of associative arrays. This format is
+chosen because no matter which library and/or RDBMS you use, you can always
+produce results in this format (note that <strong><span class="code">DbToXml</span> can accept common database library
+objects</strong> such as PEAR DB result objects). Following is an example of how the data
+is formatted</p>
+<h4>Visualisation of our 2D array format (db result)</h4>
+<table width="100%">
+    <tr valign="top">
+        <td style="background: Silver; padding: 6px; font-weight: bold;" width="50%">visual representation</td>
+        <td style="background: Silver; padding: 6px; font-weight: bold;" width="*">code equivilent</td>
+    </tr>
+    <tr valign="top">
+        <td>
+<a onclick="toggleDisplay(document.getElementById('w0k3rwfww'),this); return false;" href="#">click to show</a>
+<div id="w0k3rwfww" style="display: none;" onclick="toggleDisplay(this);">
+            <table>
+                <tr>
+                    <td>record 1</td>
+                    <td>
+                        <table border="1">
+                            <tr>
+                                <th>col1</th>
+                                <th>col2</th>
+                                <th>col3</th>
+                                <th>col4</th>
+                                <th>col5</th>
+                            </tr>
+                            <tr>
+                                <td>test data</td>
+                                <td>test data</td>
+                                <td>test data</td>
+                                <td>test data</td>
+                                <td>test data</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>record 2</td>
+                    <td>
+                        <table border="1">
+                            <tr>
+                                <th>col1</th>
+                                <th>col2</th>
+                                <th>col3</th>
+                                <th>col4</th>
+                                <th>col5</th>
+                            </tr>
+                            <tr>
+                                <td>test data</td>
+                                <td>test data</td>
+                                <td>test data</td>
+                                <td>test data</td>
+                                <td>test data</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>record 3</td>
+                    <td>
+                        <table border="1">
+                            <tr>
+                                <th>col1</th>
+                                <th>col2</th>
+                                <th>col3</th>
+                                <th>col4</th>
+                                <th>col5</th>
+                            </tr>
+                            <tr>
+                                <td>test data</td>
+                                <td>test data</td>
+                                <td>test data</td>
+                                <td>test data</td>
+                                <td>test data</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>record 4</td>
+                    <td>
+                        <table border="1">
+                            <tr>
+                                <th>col1</th>
+                                <th>col2</th>
+                                <th>col3</th>
+                                <th>col4</th>
+                                <th>col5</th>
+                            </tr>
+                            <tr>
+                                <td>test data</td>
+                                <td>test data</td>
+                                <td>test data</td>
+                                <td>test data</td>
+                                <td>test data</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>record 5</td>
+                    <td>
+                        <table border="1">
+                            <tr>
+                                <th>col1</th>
+                                <th>col2</th>
+                                <th>col3</th>
+                                <th>col4</th>
+                                <th>col5</th>
+                            </tr>
+                            <tr>
+                                <td>test data</td>
+                                <td>test data</td>
+                                <td>test data</td>
+                                <td>test data</td>
+                                <td>test data</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+</div>
+        </td>
+        <td>
+<a onclick="toggleDisplay(document.getElementById('edf93r09kf'),this); return false;" href="#">click to show</a>
+<div id="edf93r09kf" style="display: none;" onclick="toggleDisplay(this);">
+            <pre>
+// an array of associative arrays
+array(
+    array(              // record 1
+        "col1" => "Test Data",
+        "col2" => "Test Data",
+        "col3" => "Test Data",
+        "col4" => "Test Data",
+        "col5" => "Test Data",
+    ),
+    array(              // record 2
+        "col1" => "Test Data",
+        "col2" => "Test Data",
+        "col3" => "Test Data",
+        "col4" => "Test Data",
+        "col5" => "Test Data",
+    ),
+    array(              // record 3
+        "col1" => "Test Data",
+        "col2" => "Test Data",
+        "col3" => "Test Data",
+        "col4" => "Test Data",
+        "col5" => "Test Data",
+    ),
+    array(              // record 4
+        "col1" => "Test Data",
+        "col2" => "Test Data",
+        "col3" => "Test Data",
+        "col4" => "Test Data",
+        "col5" => "Test Data",
+    ),
+    array(              // record 5
+        "col1" => "Test Data",
+        "col2" => "Test Data",
+        "col3" => "Test Data",
+        "col4" => "Test Data",
+        "col5" => "Test Data",
+    )
+);
+            </pre>
+</div>
+        </td>
+    </tr>
+</table>
+<tutor:highlightFile src="dbAccess/index.php" type="PHP-SOURCE" />
+<h3>How to do a basic results conversion to XML</h3>
+<ol>
+    <li>pass the results to the constructor</li>
+    <li>call the converter execution method</li>
+    <li>assimilate the content (resistance is futile)</li>
+</ol>
+<p>Did you get all that?</p>
+<p>Phew, that was hard work wasn't it? -- NOT!</p>
+<br clear="all" />
+<tutor:highlightFile src="dbAccess/index.php" type="LIVE-OUTPUT" />
+<h3>Here is the output</h3>
+<p>We could have changed the default names for the <span class="code">result</span> tag name 
+and the <span class="code">row</span> tag name by using the following methods prior to
+running <span class="code">Execute()</span>.</p>
+<ul>
+    <li><span class="code">SetResultTagName($strName)</span></li>
+    <li><span class="code">SetRowTagName($strName)</span></li>
+</ul>
+<p>That's it! Later we'll dicover how to manipulate simple XML result trees, 
+like the one shown here, into complex trees using call-back methods. A future
+feature will include the ability to run transformations on the results tree 
+and perform grouping by [one or more] columns.</p>
+<br clear="all" />
+<h2>Abusing DbToXml</h2>
+<br/>
+<tutor:highlightFile src="dbAccess/abuse.php" type="PHP-SOURCE" />
+<tutor:highlightFile src="dbAccess/abuse.php?foo1=foo&amp;foo2=bar&amp;bar1=foo&amp;bar2=bar" type="LIVE-OUTPUT" />
+<h3>An array of associative arrays</h3>
+<p>You can actually abuse DbToXml quite successfully (we won't tell, honest) for
+an easy way to consume associative arrays. As long as you put all your associative
+arrays inside an array (according to the format above), then DbToXml will 
+convert them to XML. You can still use all the advanced call-backs and 
+groupings.</p>
+</article>

@@ -1,0 +1,23 @@
+body {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	margin: 0px;
+	width : 780px;
+}
+
+p,dl,ol,ul {
+	margin-left : 60px;
+	margin-top : 0px;
+}
+
+h2 {
+	margin-left : 20px;
+}
+
+h3 {
+	margin-left : 40px;
+}
+
+h1, h2, h3 {
+	margin-bottom : 6px;
+}

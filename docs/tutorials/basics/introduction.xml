@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article>
+
+<h2>Processing output from a database</h2>
+<p>
+    We assume that you have already downloaded the XAO library from 
+    xao-php.sf.net since the tutorials [you are now reading] are part of that download.
+    My suggestion is that you take all the class files (they all begin with
+    &quot;XAO_&quot;) from the /classes directory of the XAO distribution,
+    and copy them into your PHP includes directory. For 
+    instance, windows users might find it under c:\php\includes - check the
+    <span class="code">include_path</span> directive in your php.ini file.
+</p>
+<p>
+    If you don't put the XAO class library files in your PHP includes directory,
+    then it is up to you to supply enough path information when referencing
+    them in your <span class="code">include</span> statements. The choice is yours (unless
+    you have no control due to restrictions of a hosting service). 
+    For the tutorials, we will use a 
+    relative path so that the tutorials in this XAO distribution work
+    &quot;out-of-the-box&quot;.
+</p>
+
+<h2>Your first XAO framework script</h2>
+
+<span class="diagram">
+    <a 
+        href="../UML/xao-php_UML.png" 
+        title="click to see the full UML diagram"
+        target="_blank"
+    ><img 
+            src="_skins/_common/uml_intro01.png" 
+            alt="Class diagram of AppDoc and it's ancestor" 
+            width="110" height="260" border="0"
+    /></a><br />
+    <span>Class diagram<br />of AppDoc and<br />it's ancestor</span>
+</span>
+
+<p> 
+    Now that we have the installation sorted, we are ready to create our first XAO 
+    script. An important concept to understand is that our scripts need to be
+    built so that they do not emit any data to the web browser before the script
+    has a chance to execute. This means that the first character in your file
+    <strong>must</strong> be the beginning of a PHP opening tag. <em>This is not a
+    XAO specific restriction.</em> It is a limitation of HTTP that we cannot send
+    HTTP headers if data (ie. a blank line or other whitespace character) has 
+    already been sent. It is also a limitation of XML whose specification 
+    requires that the XML declaration must begin from the 
+    first character of the first line in the file.
+</p>
+<p>
+    These tutorials will not tell you what to do step by step. They will
+    present you with the complete contents of one file at a time, and then
+    they will explain all the lines in each file. This applies to PHP scripts,
+    XSLT templates are not XAO specific so in-depth tutorials can be sought
+    elsewhere. These tutorials only explain the bits of XSL that apply to the
+    functionality in context. Having said that, an XSLT understanding is not a
+    pre-requisite for these tutorials. 
+</p>
+<br clear="all" />
+<h3>PHP source walkthrough</h3>
+<tutor:highlightFile src="introduction/index.php" type="PHP-SOURCE" />
+<ol>
+    <li>The opening tag occupies the first character in the file. 
+    <strong style="color: red;">This is critical</strong> for reasons briefly 
+    described above.</li>
+    <li>We use the <span class="code">include_once</span> statement everytime we want to 
+       import a class.
+       All XAO classes are in filenames beginning with &quot;XAO_&quot;. The
+       rest of the filename (not including the .php extension) always corresponds 
+       to the exact name of the class. The UML class diagram shows that the
+       AppDoc class inherits the DomDoc class, so you've effectively imported
+       both classes.
+    </li>
+    <li>We use the AppDoc class to create an object which will represent 
+        <em>all</em> of the content payload destined for the browser. As a 
+        matter of convention, we will always name the variable for this object
+        <span class="code">$objAppDoc</span>. If you look at any of the source-code for XAO,
+        you will notice a convention where all variables are prefixed with 3
+        characters representing their datatype. Obviously the &quot;obj&quot; 
+        prefix indicates that the variable is an object instance. All the 
+        prefixes should be self explanatory. They are also used in function
+        names (object methods) where something is returned. This should help
+        you read the API more easily. Note that we use a variable to pass a
+        simple string to the constructor. We have to do this because PHP will
+        not allow literals to be passed to functions that 
+        <a href="http://www.php.net/manual/en/language.references.php" 
+        target="_blank"><em>reference</em></a>  variables. Internally, the 
+        constructor uses a reference to this param
+        because it accepts multiple datatypes including objects. Objects should
+        always be <em>referenced</em> otherwise a copy of the object is passed 
+        and we 
+        can have consistency problems.
+    </li>
+    <li>
+        Since <span class="code">$objAppDoc</span> is an object representing the 
+        &quot;master document&quot;, we
+        invoke methods on it to &quot;aggregate&quot; contents from other
+        sources - in this case an external flat file. Aggregation is a function
+        of the <span class="code">DomDoc</span> class since <span class="code">DomDoc</span> is dedicated
+        to managing, creating, and acquiring [XML] content.
+        After running the <span class="code">ConsumeFile</span> method (inherited from 
+        <span class="code">DomDoc</span>), the contents of the XML document will be grafted
+        onto the contents inside of <span class="code">$objAppDoc</span>. ConsumeFile begins
+        with a capital letter because it has no datatype prefix because it does
+        not <em>return</em> anything.
+    </li>
+    <li>The next function starts with <span class="code">nd</span> because it returns the 
+    <em>node</em> of the processing instruction it creates. <span class="code">ndSetStylePi()</span>
+    administers the standard processing instruction (PI) used by XML documents
+    to nominate a URI (external file) to be used for XSLT processing.
+    Not only does this function set up our main XML document [object] for
+    server-side XSLT processing, the PI it creates will tell any capable 
+    browser where to find the stylesheet if we decide to do client-side XSLT 
+    and simply send the raw XML source document to the browser. Since this is
+    a framework specific requirement, it is a method of the <span class="code">AppDoc</span> 
+    class.</li>
+    <li>The Transform method, as expected, will perform an XSLT transformation
+    on the XML content of <span class="code">$objAppDoc</span> using the stylesheet we 
+    supplied to <span class="code">ndSetStylePi()</span>. The results of this transformation
+    are placed in a member variable called <span class="code">strAltPayload</span>. If this
+    member variable is not populated, then only the raw XML is sent to the
+    browser, along with a header identifying the content type as XML. These
+    facilities are all provided by the <span class="code">AppDoc</span> extension to 
+    <span class="code">DomDoc</span></li>
+    <li>Nothing gets to the browser unless we run the <span class="code">Send()</span>
+    function. This is the function that determines if the browser gets raw XML
+    or the contents of <span class="code">strAltPayload</span>. In rare cases, <span class="code">strAltPayload</span>
+    is populated with error debugging data. In our example, the user will 
+    recieve the results of transforming &quot;blog.xml&quot; with 
+    &quot;index.xsl&quot;. Why don't you try corrupting the XML or the XSL
+    file and see what you get ;)</li>
+</ol>
+
+<tutor:highlightFile src="introduction/data/blog.xml" type="XML-CONTENT" />
+<h3>Source XML</h3>
+<ul>
+    <li>The example code created a blank XML document, then appends an
+    additional [external] XML document inside it. Click the corresponding box
+    on the right to see the contents of the source XML file - blog.xml</li>
+    <li>If you want to see what the entire XML payload looks like, comment
+    out the Transform() statement, and view source in your web browser.</li>
+</ul>
+
+<tutor:highlightFile src="introduction/skins/index.xsl" type="STYLESHEET" />
+<h3>XSLT template</h3>
+<ul>
+    <li>Nothing out of the ordinary here. If you are not familiar with XSLT,
+    then you'll be pleasantly surprised at the wealth of information resources
+    on the topic around the web. Lessons in XSLT are beyond the scope of these
+    tutorials. Having said that, XAO makes them so easy to implement, you
+    can learn them while using XAO.</li>
+</ul>
+
+<tutor:highlightFile src="introduction/index.php" type="LIVE-OUTPUT" />
+<h3>Result output</h3>
+<ul>
+    <li>XSLT transformation takes place on the server side with our example.</li>
+    <li>Click view source in your web browser to see the results of the 
+    transform which uses the <span class="code">index.xsl</span> template.</li>
+</ul>
+</article>
