@@ -26,7 +26,7 @@ class reader extends AppDoc {
         $this->strXsltProcessor = "SABLOTRON";
         $this->ndRoot->set_attribute(
             "xmlns:tutor",
-            "http://xao-php.sourceforge.net/schema/tutor"
+            "http://github.com/tezza1971/XAO-PHP/schema/tutor"
         );
         
         $this->arrReq = $arrReq;

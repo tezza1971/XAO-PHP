@@ -2,7 +2,7 @@
 <xsl:stylesheet 
     version="1.0" 
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xao="http://xao-php.sourceforge.net/schema/xao_1-0.xsd">
+    xmlns:xao="http://github.com/tezza1971/XAO-PHP/schema/xao_1-0.xsd">
     
     <xsl:output method="html" />
 

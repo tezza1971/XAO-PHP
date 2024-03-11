@@ -10,9 +10,9 @@
 * @author       Terence Kearns
 * @version      1.0 alpha
 * @copyright    Terence Kearns 2003
-* @license      LGPL
+* @license      Apache License, Version 2.0 (see http://www.apache.org/licenses/LICENSE-2.0 )
 * @package      XAO
-* @link         http://xao-php.sourceforge.net
+* @link         https://github.com/tezza1971/XAO-PHP
 */
 
 /**

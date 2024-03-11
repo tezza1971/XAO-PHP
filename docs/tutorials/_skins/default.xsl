@@ -3,8 +3,8 @@
 <xsl:stylesheet 
     version    ="1.0" 
     xmlns:xsl  ="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xao  ="http://xao-php.sourceforge.net/schema/xao_1-0.xsd"
-    xmlns:tutor="http://xao-php.sourceforge.net/schema/tutor"
+    xmlns:xao  ="http://github.com/tezza1971/XAO-PHP/schema/xao_1-0.xsd"
+    xmlns:tutor="http://github.com/tezza1971/XAO-PHP/schema/tutor"
 >
     <xsl:import href="../../../classes/XAO_errors.xsl" />
     <xsl:output method="html" />
@@ -49,7 +49,7 @@
                 </xsl:choose>
                 <br clear="all" />
                 <address class="pageFooter">
-                	<a href="http://xao-php.sourceforge.net">official homepage</a> | 
+                	<a href="https://github.com/tezza1971/XAO-PHP>official homepage</a> | 
                 	<a href="http://sourceforge.net/project/showfiles.php?group_id=88235">get latest</a> | 
                 	<a href="tutor.php">tutorials TOC</a> | 
                 	<a href="../api/index.html">API reference</a>
@@ -66,7 +66,7 @@
     <xsl:template match="/xaoTutes/article//node() | @*" mode="copy">
         <xsl:copy>
             <xsl:apply-templates 
-                select="node()[namespace-uri()!='http://xao-php.sourceforge.net/schema/xao_1-0.xsd'] | @*" 
+                select="node()[namespace-uri()!='http://github.com/tezza1971/XAO-PHP/schema/xao_1-0.xsd'] | @*" 
                 mode="copy"
             />
         </xsl:copy>
@@ -114,7 +114,7 @@
                     <div class="topMenu">
                         <strong><a href="tutor.php">Tutorials index</a> |
                     	<a href="../api/index.html">API reference</a> |
-                        <a href="http://xao-php.sourceforge.net" target="_blank">XAO homepage</a></strong><br />
+                        <a href="https://github.com/tezza1971/XAO-PHP target="_blank">XAO homepage</a></strong><br />
                         <xsl:value-of select="@name" />
                         <xsl:apply-templates select="section" mode="navigation" />
                     </div>

@@ -54,7 +54,7 @@ class XaoRoot {
     * @access   public
     * @var      string  
     */
-    var $idXaoNamespace = "http://xao-php.sourceforge.net/schema/xao_1-0.xsd";
+    var $idXaoNamespace = "http://github.com/tezza1971/XAO-PHP/schema/xao_1-0.xsd";
     
     /**
     * XAO XML Namespace Prefix

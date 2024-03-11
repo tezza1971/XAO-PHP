@@ -12,7 +12,7 @@ class article extends DomDoc {
         $this->DomDoc($uriFile,XAO_DOC_READFILE);
         $this->ndRoot->set_attribute(
             "xmlns:tutor",
-            "http://xao-php.sourceforge.net/schema/tutor"
+            "http://github.com/tezza1971/XAO-PHP/schema/tutor"
         );
         $this->uriArticle = $uriFile;
         $this->SetCustomTagName("highlightFile","GetHighlights");
