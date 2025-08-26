@@ -76,14 +76,25 @@ class DomDoc extends XaoRoot {
                     $this->objDoc = $doc;
                 }
             }
-            $this->ndRoot = $this->objDoc->documentElement;
+            $root = $this->objDoc->documentElement;
+            if ($root instanceof DOMElement) {
+                $this->ndRoot = $root;
+            } else {
+                $this->_AbortDocument("Document has no root element.");
+            }
         }
         elseif($this->_intMode === XAO_DOC_REFERENCE) {
-            $this->objDoc = $mxdData;
-            $this->ndRoot = $mxdData->documentElement
-                ?? $this->_AbortDocument(
-                    "The reference document object is not a valid native PHP DOM XML document."
-                );
+            if (!$mxdData instanceof DOMDocument) {
+                $this->_AbortDocument("The reference document object is not a valid native PHP DOM XML document.");
+            } else {
+                $this->objDoc = $mxdData;
+                $root = $mxdData->documentElement;
+                if ($root instanceof DOMElement) {
+                    $this->ndRoot = $root;
+                } else {
+                    $this->_AbortDocument("The reference DOMDocument has no documentElement.");
+                }
+            }
         }
         else {
             $this->_AbortDocument(
@@ -267,17 +278,6 @@ class DomDoc extends XaoRoot {
     *
     * @param    string  the name of the new element
     * @param    string  the content of the new element
-    * @return   node    the newly added element node object
-    * @access   public
-    */
-    /**
-    * quickly add a new element under the root element.
-    *
-    * This function is basically a shortcut for the common task of adding a new
-    * element with some content under the root element of the document.
-    *
-    * @param    string  the name of the new element
-    * @param    string  the content of the new element
     * @return   DOMElement|null the newly added element node object
     * @access   public
     */
@@ -295,7 +295,8 @@ class DomDoc extends XaoRoot {
         $ndNew = $this->ndRoot->appendChild($elNew);
         $ndNew->nodeValue = $strCont;
 
-        return $ndNew instanceof DOMElement ? $ndNew : null;
+        $elReturn = $ndNew instanceof DOMElement ? $ndNew : null;
+        return $elReturn;
     }
 
 
@@ -305,22 +306,10 @@ class DomDoc extends XaoRoot {
     * This function is basically a shortcut for the common task of adding a new
     * element with some content under an existing node of the document.
     *
-    * @param    node    a reference to the exisitng element node
-    * @param    string  the name of the new element
-    * @param    string  the content of the new element
-    * @return   node    the newly added element node object
-    * @access   public
-    */
-    /**
-    * quickly add a new element under an exising element node.
-    *
-    * This function is basically a shortcut for the common task of adding a new
-    * element with some content under an existing node of the document.
-    *
     * @param    DOMElement  a reference to the exisitng element node
     * @param    string  the name of the new element
     * @param    string  the content of the new element
-    * @return   DOMElement|null the newly added element node object
+    * @return   DOMElement|null    the newly added element node object
     * @access   public
     */
     public function &ndAppendToNode(DOMElement $ndStub, string $strElName, string $strCont = ""): ?DOMElement {
@@ -337,7 +326,8 @@ class DomDoc extends XaoRoot {
         $ndNew = $ndStub->appendChild($elNew);
         $ndNew->nodeValue = $strCont;
 
-        return $ndNew instanceof DOMElement ? $ndNew : null;
+        $elReturn = $ndNew instanceof DOMElement ? $ndNew : null;
+        return $elReturn;
     }
 
 
@@ -359,9 +349,9 @@ class DomDoc extends XaoRoot {
     * that this function is PIVOTAL to the XAO framework concept which uses
     * aggregation to accumulate content through the CONSUME methods.
     *
-    * @param    node    the node under which the fragment is to be grafted
-    * @param    node    foreign node containing the fragment to be imported
-    * @return   node    the newly added element node object
+    * @param    DOMNode    the node under which the fragment is to be grafted
+    * @param    DOMNode    foreign node containing the fragment to be imported
+    * @return   DOMNode    the newly added element node object
     * @access   public
     */
     public function &ndImportChildFrag(DOMNode $ndStub, DOMNode $ndNew): ?DOMNode {
@@ -369,15 +359,13 @@ class DomDoc extends XaoRoot {
 
         if (!$this->blnTestElementNode($ndStub)) {
             throw new Exception(
-                "ndImportChildFrag: First argument is not a valid element node.",
-                $this->arrSetErrFnc(__FUNCTION__, __LINE__)
+                "ndImportChildFrag: First argument is not a valid element node."
             );
         }
 
         if (!$this->blnTestElementNode($ndNew)) {
             throw new Exception(
-                "ndImportChildFrag: Second argument is not a valid element node.",
-                $this->arrSetErrFnc(__FUNCTION__, __LINE__)  
+                "ndImportChildFrag: Second argument is not a valid element node."
             );
         }
 
@@ -404,8 +392,7 @@ class DomDoc extends XaoRoot {
 
         if (!$objDoc instanceof DomDoc) {
             throw new Exception(
-                "ndConsumeDoc: No DomDoc object given", 
-                $this->arrSetErrFnc(__FUNCTION__, __LINE__)
+                "ndConsumeDoc: No DomDoc object given"
             );
         }
 
@@ -414,8 +401,7 @@ class DomDoc extends XaoRoot {
                 "ndConsumeDoc: No root node. First param must be an XAO "
                 . "DomDoc, not just a basic PHP DOMXML object. Use the "
                 . "DomFactory class if you need to convert an existing PHP "
-                . "DOMXML object.",
-                $this->arrSetErrFnc(__FUNCTION__, __LINE__)  
+                . "DOMXML object."
             );
         }
 
@@ -468,8 +454,7 @@ class DomDoc extends XaoRoot {
         if (!$this->blnTestXmlName($strRoot)) {
             throw new Exception(
                 "ndConsumeFragData: " . $strRoot
-                . " is an invalid name for root element.",
-                $this->arrSetErrFnc(__FUNCTION__, __LINE__)
+                . " is an invalid name for root element."
             );
         }
 

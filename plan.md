@@ -68,11 +68,11 @@ JSON format:
 
 ### **Phase 2 — Rendering Abstraction**
 
-* \[ \] Create `RendererInterface`.  
-  * Implement `XsltRenderer` (client-side ready: serve XML \+ stylesheet ref).  
-  * Implement `HtmxRenderer` (generate HTML fragments for HTMX swaps).  
-  * Implement `JsonRenderer` (XML → JSON for API/React use).  
-* \[ \] Set up mechanism to choose rendering strategy via config/env or route param.
+* [x] Create `RendererInterface`.
+  * [x] Implement `XsltRenderer` (client-side ready: serve XML + stylesheet ref).
+  * [x] Implement `HtmxRenderer` (generate HTML fragments for HTMX swaps).
+  * [x] Implement `JsonRenderer` (XML → JSON for API/React use).
+* [x] Set up mechanism to choose rendering strategy via config/env or route param.
 
 ### **Phase 3 — React Integration**
 
