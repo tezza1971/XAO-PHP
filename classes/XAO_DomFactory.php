@@ -47,31 +47,37 @@ include_once "XAO_TextDebugger.php";
 */
 class DomFactory extends XaoRoot {
     
-    var $objDoc;
+    public ?DOMDocument $objDoc = null;
     
-    var $intErrorLine;
+    public ?int $intErrorLine = null;
     
-    var $uriContextFile;
+    public ?string $uriContextFile = null;
     
-    var $strErrorMsg;
+    public string $strErrorMsg = "";
     
-    var $strErrorMsgFull;
+    public string $strErrorMsgFull = "";
     
-    function DomFactory($strTarget) {
+    // PHP 8 constructor; keep old-style for BC
+    public function __construct(string $strTarget) {
+        $this->DomFactory($strTarget);
+    }
+
+    // Back-compat old-style constructor
+    public function DomFactory(string $strTarget) {
         if(strstr($strTarget,"\n") === false) {
             if(file_exists($strTarget)) {
                     $this->objDoc = $this->_objDomParseFile($strTarget);
                     return;
             }
         }
-        $this->objDoc =& $this->_objDomParseData($strTarget);
+        $this->objDoc = $this->_objDomParseData($strTarget);
     }
     
-    function &objGetObjDoc() {
+    public function objGetObjDoc(): ?DOMDocument {
         return $this->objDoc;
     }
 
-    function &_objDomParseFile($uriSrc) {
+    protected function _objDomParseFile(string $uriSrc): ?DOMDocument {
                                             // assume that the file does not exist
             $this->uriContextFile = null;
         if(file_exists($uriSrc)) {
@@ -107,72 +113,111 @@ class DomFactory extends XaoRoot {
                 $this->arrSetErrFnc(__FUNCTION__,__LINE__)
             );
         }
-        return false;
+        return null;
     }
     
-    function &_objDomParseData($strSrc) {
-                                            // Attempt a new DOM object using 
-                                            // supplied data. Suppress errors.
-       $objDoc = @domxml_open_mem($strSrc);
-                                        // test for success. if parse fails, we 
-                                        // are obligated to produce error 
-                                        // information.
-       if(!is_object($objDoc)) {
-                                            
+    protected function _objDomParseData(string $strSrc): ?DOMDocument {
+                                            // Attempt a new DOM object using
+                                            // supplied data. Use modern DOMDocument API
+        $objDoc = new DOMDocument('1.0', 'UTF-8');
+
+        // Enable user error handling for libxml
+        $useInternalErrors = libxml_use_internal_errors(true);
+        libxml_clear_errors();
+
+        // Attempt to load the XML data
+        $success = @$objDoc->loadXML($strSrc);
+
+        // Restore previous error handling state
+        libxml_use_internal_errors($useInternalErrors);
+
+        // test for success. if parse fails, we
+        // are obligated to produce error
+        // information.
+        if(!$success) {
+            $errors = libxml_get_errors();
             $strFile = "";
-            if(strlen($this->uriContextFile)) 
+            if(strlen((string)$this->uriContextFile))
                 $strFile = " in file ".$this->uriContextFile." ";
-                                            // We only go to the bother of 
-                                            // performing another [sax] parse if
-                                            // we failed the initial DOM parse.
-            if($this->blnSaxParse($strSrc)) {
-                                            // DOM parse failed, SAX parse succeded.
-                                            // We need DOM parsing to succeed.
-                                            // Throw appropriate error.
+
+            if (!empty($errors)) {
+                // Use libxml error information
+                $error = $errors[0]; // Get first error
+                $this->strErrorMsg = trim($error->message ?? 'Unknown XML error');
+                $this->intErrorLine = (int)($error->line ?? 0) ?: null;
+
+                $this->strErrorMsgFull = "The following parse error occurred";
+                if($this->intErrorLine !== null) {
+                    $this->strErrorMsgFull .=
+                        " on or near line ".$this->intErrorLine;
+                }
+                if(strlen((string)$this->uriContextFile)) {
+                    $this->strErrorMsgFull .=
+                        " in the file ".$this->uriContextFile;
+                }
+                $this->strErrorMsgFull .= ":\n ".$this->strErrorMsg."\n";
+
+                if(is_int($this->intErrorLine)) {
+                    $objDebugData = new TextDebugger(
+                        $strSrc,
+                        $this->intErrorLine
+                    );
+                    $this->strDebugData = $objDebugData->strGetHtml();
+                }
+
                 $this->Throw(
-                    "The XML data ".$strFile
-                    ."was parsed by PHP's XML parser but not by "
-                    ."PHP's DOM XML domxml_open_mem() method. No details of the "
-                    ."error can be extracted from domxml_open_mem(). Sorry.",
+                    $this->strErrorMsgFull.($this->strDebugData ?? ''),
                     $this->arrSetErrFnc(__FUNCTION__,__LINE__)
                 );
+            } else {
+                // Fallback to SAX parser for more detailed error info
+                if($this->blnSaxParse($strSrc)) {
+                    // DOM parse failed, SAX parse succeeded.
+                    // We need DOM parsing to succeed.
+                    // Throw appropriate error.
+                    $this->Throw(
+                        "The XML data ".$strFile
+                        ."was parsed by PHP's XML parser but not by "
+                        ."PHP's DOM XML DOMDocument::loadXML() method. No details of the "
+                        ."error can be extracted from DOMDocument::loadXML(). Sorry.",
+                        $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+                    );
+                } else {
+                    // While we expected the SAX parse to
+                    // fail also, it did the job of
+                    // providing the error information that
+                    // we could not extract from DOM
+                    $this->Throw(
+                        ($this->strErrorMsgFull ?? '').($this->strDebugData ?? ''),
+                        $this->arrSetErrFnc(__FUNCTION__,__LINE__)
+                    );
+                }
             }
-            else {
-                                            // While we expected the SAX parse to
-                                            // fail also, it did the job of
-                                            // providing the error information that
-                                            // we could not extract from DOM
-                $this->Throw(
-                    $this->strErrorMsgFull.$this->strDebugData,
-                    $this->arrSetErrFnc(__FUNCTION__,__LINE__)
-                );
-            }
-            return false;
+            return null;
         }
         return $objDoc;
     }
     
-    function blnSaxParse($strData) {
+    protected function blnSaxParse(string $strData): bool {
         $xp = xml_parser_create();
-        //xml_set_object($xp, $this);
         $xpRes = xml_parse($xp,$strData);
         if(!$xpRes) {
             $this->strErrorMsg = xml_error_string(xml_get_error_code($xp));
             $this->intErrorLine = xml_get_current_line_number($xp);
             
             $this->strErrorMsgFull = "The following parse error occured";
-            if($this->intErrorLine !== false) {
+            if($this->intErrorLine !== null) {
                 $this->strErrorMsgFull .= 
                     " on or near line ".$this->intErrorLine;
             }
-            if(strlen($this->uriContextFile)) {
+            if(strlen((string)$this->uriContextFile)) {
                 $this->strErrorMsgFull .= 
                     " in the file ".$this->uriContextFile;
             }
             $this->strErrorMsgFull .= ":\n ".$this->strErrorMsg."\n";
             
             if(is_int($this->intErrorLine)) {
-                $objDebugData =& TextDebugger(
+                $objDebugData = new TextDebugger(
                     $strData,
                     $this->intErrorLine
                 );
@@ -180,11 +225,14 @@ class DomFactory extends XaoRoot {
             }
         }
         xml_parser_free($xp);
-        return $xpRes;
+        return (bool)$xpRes;
     }
 
-    function Throw($strErrMsg,$arrErrAttribs) {
-        if($this->intErrorLine) $arrErrAttribs["line"] = $this->intErrorLine;
+    public function Throw($strErrMsg,$arrErrAttribs = null): void {
+        if($this->intErrorLine) {
+            if(is_null($arrErrAttribs)) $arrErrAttribs = array();
+            $arrErrAttribs["line"] = $this->intErrorLine;
+        }
         parent::Throw($strErrMsg,$arrErrAttribs);
     }
 }
