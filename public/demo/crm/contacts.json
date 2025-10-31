@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "phone": "123-456-7890",
+        "interactions": [
+            {
+                "date": "2025-10-30T13:19:00Z",
+                "notes": "Initial contact. Discussed project requirements."
+            }
+        ]
+    }
+]

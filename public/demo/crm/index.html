@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple CRM</title>
+    <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body>
+    <h1>Simple CRM</h1>
+
+    <div id="crm-contacts" hx-get="get_contacts.php" hx-trigger="load">
+        <!-- CRM contacts will be loaded here -->
+    </div>
+
+    <hr>
+
+    <h2>Add a New Contact</h2>
+    <form hx-post="add_contact.php" hx-target="#crm-contacts" hx-swap="innerHTML">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone">
+        </div>
+        <button type="submit">Add Contact</button>
+    </form>
+
+    <hr>
+
+    <h2>View a Contact</h2>
+    <form hx-get="view_contact.php" hx-target="#contact-details" hx-swap="innerHTML">
+        <div>
+            <label for="contact_id">Contact ID:</label>
+            <input type="number" id="contact_id" name="contact_id" required>
+        </div>
+        <button type="submit">View Contact</button>
+    </form>
+
+    <div id="contact-details">
+        <!-- Contact details will be loaded here -->
+    </div>
+</body>
+</html>

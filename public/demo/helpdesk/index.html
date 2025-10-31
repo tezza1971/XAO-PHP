@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helpdesk</title>
+    <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body>
+    <h1>Helpdesk</h1>
+
+    <div id="helpdesk-tickets" hx-get="get_tickets.php" hx-trigger="load">
+        <!-- Helpdesk tickets will be loaded here -->
+    </div>
+
+    <hr>
+
+    <h2>Create a New Ticket</h2>
+    <form hx-post="add_ticket.php" hx-target="#helpdesk-tickets" hx-swap="innerHTML">
+        <div>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+        </div>
+        <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit">Create Ticket</button>
+    </form>
+
+    <hr>
+
+    <h2>View a Ticket</h2>
+    <form hx-get="view_ticket.php" hx-target="#ticket-details" hx-swap="innerHTML">
+        <div>
+            <label for="ticket_id">Ticket ID:</label>
+            <input type="number" id="ticket_id" name="ticket_id" required>
+        </div>
+        <button type="submit">View Ticket</button>
+    </form>
+
+    <div id="ticket-details">
+        <!-- Ticket details will be loaded here -->
+    </div>
+</body>
+</html>

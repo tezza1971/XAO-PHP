@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "subject": "My computer is on fire!",
+        "message": "I turned on my computer this morning and it started smoking and now there are flames coming out of the back. Please help!",
+        "status": "open",
+        "created_at": "2025-10-30T13:18:00Z"
+    }
+]

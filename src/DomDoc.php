@@ -110,6 +110,18 @@ class DomDoc extends XaoRoot
     }
 
     /**
+     * Serializes the document to an HTML fragment string.
+     *
+     * This is useful for generating HTML snippets for HTMX responses.
+     *
+     * @return string The HTML fragment content of the document.
+     */
+    public function htmlGetFrag(): string
+    {
+        return $this->objDoc->saveHTML($this->ndRoot);
+    }
+
+    /**
      * Saves the XML document to a file.
      *
      * @param string $uriDestination The path to the destination file.
@@ -262,6 +274,7 @@ class DomDoc extends XaoRoot
     /**
      * Sets a custom tag query for processing.
      *
+     .
      * @param string $strQuery The XPath query.
      * @param string $fncName The name of the callback function.
      * @throws BadMethodCallException if the callback method is not defined.
